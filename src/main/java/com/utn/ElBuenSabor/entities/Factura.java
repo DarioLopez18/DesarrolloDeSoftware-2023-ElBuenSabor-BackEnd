@@ -57,13 +57,6 @@ public class Factura extends Base {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaBaja;
 
-    //-----Esta relacion creo que no va-----
-
-    //@NotNull
-    //@OneToOne
-    //@JoinColumn(name = "id_pedido")
-    //private Pedido pedido;
-
     @NotNull
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinTable (
