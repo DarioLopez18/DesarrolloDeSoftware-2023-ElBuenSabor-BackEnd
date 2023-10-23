@@ -73,6 +73,4 @@ public class Factura extends Base {
     )
     private List<DetalleFactura> detalleFacturas = new ArrayList<DetalleFactura>();
 
-
-
 }

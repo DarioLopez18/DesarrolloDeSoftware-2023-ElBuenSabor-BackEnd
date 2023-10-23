@@ -27,6 +27,11 @@ public class DetalleFactura extends Base {
     @JoinColumn(name = "id_articulo_manufacturado")
     private ArticuloManufacturado articuloManufacturado;
 
+    // SOY VALE : esta es la duda que tengo de la relacion si va o no cuando la flecha va para el otro lado ,porque vi que en algunos lo hicieron igual
+    //@NotNull
+    // @ManyToOne()
+    // @JoinColumn(name = "id_factura")
+    // private Factura factura;
 
 
 }
