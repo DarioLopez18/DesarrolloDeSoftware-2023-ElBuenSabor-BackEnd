@@ -28,8 +28,11 @@ public class Cliente extends Base {
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;
 
+
+
     @NotNull
-    @OneToMany(mappedBy = "cliente")
+    @OneToMany()
+     @JoinColumn (name = "id_cliente")
     private List<Domicilio> domicilios;
 
     @Column(name = "fecha_alta")
