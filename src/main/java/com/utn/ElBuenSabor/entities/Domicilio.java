@@ -36,11 +36,11 @@ public class Domicilio extends Base {
 
     @Column(name = "piso_vivienda")
     private Integer pisoDpto;
-
-    @NotNull
-    @ManyToOne()
-    @JoinColumn(name = "id_cliente")
-    private Cliente cliente;
+//ESTO SE MAPEA EN CLIENTE
+//    @NotNull
+//    @ManyToOne()
+//    @JoinColumn(name = "id_cliente")
+//    private Cliente cliente;
 
     @NotNull
     @Column(name = "fecha_alta")

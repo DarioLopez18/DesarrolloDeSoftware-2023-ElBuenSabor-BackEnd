@@ -8,6 +8,7 @@ import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "pedido")
@@ -77,9 +78,14 @@ public class Pedido extends Base {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaBaja;
 
+
     @OneToOne()
     @JoinColumn(name = "id_factura")
     private Factura factura;
 
+    @NotNull
+    @OneToMany()
+    @JoinColumn(name = "id_pedido")
+    private List<DetallePedidoArticuloManufacturado> detallePedidoArticuloManufacturados;
 
 }
