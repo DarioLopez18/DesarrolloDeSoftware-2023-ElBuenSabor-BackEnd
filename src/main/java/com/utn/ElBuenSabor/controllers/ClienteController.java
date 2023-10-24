@@ -9,7 +9,7 @@ import org.springframework.data.domain.Pageable;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "api/v1/clientes")
+@RequestMapping(path = "api/v1/cliente")
 public class ClienteController extends BaseControllerImpl<Cliente, ClienteServiceImpl>{
 
     @GetMapping("/search")
