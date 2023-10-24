@@ -1,5 +1,6 @@
 package com.utn.ElBuenSabor.services;
 
+import com.utn.ElBuenSabor.entities.Factura;
 import com.utn.ElBuenSabor.entities.Pedido;
 import com.utn.ElBuenSabor.repositories.BaseRepository;
 import com.utn.ElBuenSabor.repositories.PedidoRepository;
@@ -21,11 +22,21 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements P
 
     @Override
     public List<Pedido> search(Long filtro) throws Exception {
-        return null;
+        try{
+            List<Pedido> pedidos = pedidoRepository.findByIdContaining(filtro);
+            return pedidos;
+        } catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
     }
 
     @Override
     public Page<Pedido> search(Long filtro, Pageable pageable) throws Exception {
-        return null;
+        try{
+            Page<Pedido> pedidos = pedidoRepository.findByIdContaining (filtro, pageable);
+            return pedidos;
+        } catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
     }
 }
