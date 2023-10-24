@@ -45,6 +45,33 @@ public class ElBuenSaborApplication {
 			//guardar user
 			usuarioRepository.save(user1);
 
+			//Crea User
+			Usuario user2 = Usuario.builder()
+					.auth0Id("auth0Id1234")
+					.username("username1234")
+					.rol(Rol.ADMINISTRADOR)
+					.build();
+			//guardar user
+			usuarioRepository.save(user1);
+
+			//Crea User
+			Usuario user3 = Usuario.builder()
+					.auth0Id("auth0Id12345")
+					.username("username12345")
+					.rol(Rol.COCINERO)
+					.build();
+			//guardar user
+			usuarioRepository.save(user1);
+
+			//Crea User
+			Usuario user4 = Usuario.builder()
+					.auth0Id("auth0Id123456")
+					.username("username123456")
+					.rol(Rol.DELIVERY)
+					.build();
+			//guardar user
+			usuarioRepository.save(user2);
+
 			//Crea y agrega domicilios al cliente asociado a este usuario
 			Cliente cliente1 = Cliente.builder()
 					.apellido("Apellido")
@@ -72,8 +99,8 @@ public class ElBuenSaborApplication {
 					.fechaAlta(new Date())
 					.usuario(user1) // Asociar el cliente con el usuario
 					.build();
-					//guardar cliente
-					clienteRepository.save(cliente1);
+			//guardar cliente
+			clienteRepository.save(cliente1);
 
 
 
@@ -81,4 +108,3 @@ public class ElBuenSaborApplication {
 		};
 	}
 }
-
