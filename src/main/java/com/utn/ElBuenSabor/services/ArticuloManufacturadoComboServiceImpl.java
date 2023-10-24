@@ -4,7 +4,9 @@ import com.utn.ElBuenSabor.entities.ArticuloManufacturadoCombo;
 import com.utn.ElBuenSabor.repositories.ArticuloManufacturadoComboRepository;
 import com.utn.ElBuenSabor.repositories.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class ArticuloManufacturadoComboServiceImpl extends BaseServiceImpl<ArticuloManufacturadoCombo,Long> {
     @Autowired
     private ArticuloManufacturadoComboRepository articuloManufacturadoComboRepository;

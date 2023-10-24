@@ -4,7 +4,9 @@ import com.utn.ElBuenSabor.entities.RecetaArticuloInsumo;
 import com.utn.ElBuenSabor.repositories.BaseRepository;
 import com.utn.ElBuenSabor.repositories.RecetaArticuloInsumoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
+@Service
 public class RecetaArticuloInsumoServiceImpl extends BaseServiceImpl<RecetaArticuloInsumo,Long> implements RecetaArticuloInsumoService{
 
     @Autowired
