@@ -14,7 +14,7 @@ import java.util.List;
 public class CocineroServiceImpl extends BaseServiceImpl<Cocinero, Long> implements CocineroService{
 
     @Autowired
-    private CocineroRepository clienteRepository;
+    private CocineroRepository cocineroRepository;
 
     public CocineroServiceImpl(BaseRepository<Cocinero, Long> baseRepository) {
         super(baseRepository);
@@ -23,10 +23,10 @@ public class CocineroServiceImpl extends BaseServiceImpl<Cocinero, Long> impleme
     @Override
     public List<Cocinero> search(String filtro) throws Exception {
         try{
-            //List<Cocinero> clientes = clienteRepository.findByNombreContainingOrApellidoContaining(filtro, filtro);
-            //List<Cocinero> clientes = clienteRepository.search(filtro);
-            List<Cocinero> clientes = clienteRepository.searchNativo(filtro);
-            return clientes;
+            //List<Cocinero> cocineros = cocineroRepository.findByNombreContainingOrApellidoContaining(filtro, filtro);
+            //List<Cocinero> cocineros = cocineroRepository.search(filtro);
+            List<Cocinero> cocineros = cocineroRepository.searchNativo(filtro);
+            return cocineros;
 
         } catch (Exception e){
             throw new Exception(e.getMessage());
@@ -36,10 +36,10 @@ public class CocineroServiceImpl extends BaseServiceImpl<Cocinero, Long> impleme
     @Override
     public Page<Cocinero> search(String filtro, Pageable pageable) throws Exception {
         try{
-            //Page<Cocinero> clientes = clienteRepository.findByNombreContainingOrApellidoContaining(filtro, filtro, pageable);
-            //Page<Cocinero> clientes = clienteRepository.search(filtro, pageable);
-            Page<Cocinero> clientes = clienteRepository.searchNativo(filtro, pageable);
-            return clientes;
+            //Page<Cocinero> cocineros = CocineroRepositoryRepository.findByNombreContainingOrApellidoContaining(filtro, filtro, pageable);
+            //Page<Cocinero> cocineros = CocineroRepositoryRepository.search(filtro, pageable);
+            Page<Cocinero> cocineros = cocineroRepository.searchNativo(filtro, pageable);
+            return cocineros;
 
         } catch (Exception e){
             throw new Exception(e.getMessage());

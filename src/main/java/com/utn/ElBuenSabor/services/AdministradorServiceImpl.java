@@ -14,7 +14,7 @@ import java.util.List;
 public class AdministradorServiceImpl extends BaseServiceImpl<Administrador, Long> implements AdministradorService{
 
     @Autowired
-    private AdministradorRepository clienteRepository;
+    private AdministradorRepository administradorRepository;
 
     public AdministradorServiceImpl(BaseRepository<Administrador, Long> baseRepository) {
         super(baseRepository);
@@ -23,10 +23,10 @@ public class AdministradorServiceImpl extends BaseServiceImpl<Administrador, Lon
     @Override
     public List<Administrador> search(String filtro) throws Exception {
         try{
-            //List<Administrador> clientes = clienteRepository.findByNombreContainingOrApellidoContaining(filtro, filtro);
-            //List<Administrador> clientes = clienteRepository.search(filtro);
-            List<Administrador> clientes = clienteRepository.searchNativo(filtro);
-            return clientes;
+            //List<Administrador> administradores = administradorRepository.findByNombreContainingOrApellidoContaining(filtro, filtro);
+            //List<Administrador> administradores = administradorRepository.search(filtro);
+            List<Administrador> administradores = administradorRepository.searchNativo(filtro);
+            return administradores;
 
         } catch (Exception e){
             throw new Exception(e.getMessage());
@@ -36,10 +36,10 @@ public class AdministradorServiceImpl extends BaseServiceImpl<Administrador, Lon
     @Override
     public Page<Administrador> search(String filtro, Pageable pageable) throws Exception {
         try{
-            //Page<Administrador> clientes = clienteRepository.findByNombreContainingOrApellidoContaining(filtro, filtro, pageable);
-            //Page<Administrador> clientes = clienteRepository.search(filtro, pageable);
-            Page<Administrador> clientes = clienteRepository.searchNativo(filtro, pageable);
-            return clientes;
+            //Page<Administrador> administradores = administradorRepository.findByNombreContainingOrApellidoContaining(filtro, filtro, pageable);
+            //Page<Administrador> administradores = administradorRepository.search(filtro, pageable);
+            Page<Administrador> administradores = administradorRepository.searchNativo(filtro, pageable);
+            return administradores;
 
         } catch (Exception e){
             throw new Exception(e.getMessage());

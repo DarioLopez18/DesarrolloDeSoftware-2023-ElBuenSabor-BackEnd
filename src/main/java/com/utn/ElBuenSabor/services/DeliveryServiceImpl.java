@@ -14,7 +14,7 @@ import java.util.List;
 public class DeliveryServiceImpl extends BaseServiceImpl<Delivery, Long> implements DeliveryService{
 
     @Autowired
-    private DeliveryRepository clienteRepository;
+    private DeliveryRepository deliveryRepository;
 
     public DeliveryServiceImpl(BaseRepository<Delivery, Long> baseRepository) {
         super(baseRepository);
@@ -23,10 +23,10 @@ public class DeliveryServiceImpl extends BaseServiceImpl<Delivery, Long> impleme
     @Override
     public List<Delivery> search(String filtro) throws Exception {
         try{
-            //List<Delivery> clientes = clienteRepository.findByNombreContainingOrApellidoContaining(filtro, filtro);
-            //List<Delivery> clientes = clienteRepository.search(filtro);
-            List<Delivery> clientes = clienteRepository.searchNativo(filtro);
-            return clientes;
+            //List<Delivery> deliverys = deliveryRepository.findByNombreContainingOrApellidoContaining(filtro, filtro);
+            //List<Delivery> deliverys = deliveryRepository.search(filtro);
+            List<Delivery> deliverys = deliveryRepository.searchNativo(filtro);
+            return deliverys;
 
         } catch (Exception e){
             throw new Exception(e.getMessage());
@@ -36,10 +36,10 @@ public class DeliveryServiceImpl extends BaseServiceImpl<Delivery, Long> impleme
     @Override
     public Page<Delivery> search(String filtro, Pageable pageable) throws Exception {
         try{
-            //Page<Delivery> clientes = clienteRepository.findByNombreContainingOrApellidoContaining(filtro, filtro, pageable);
-            //Page<Delivery> clientes = clienteRepository.search(filtro, pageable);
-            Page<Delivery> clientes = clienteRepository.searchNativo(filtro, pageable);
-            return clientes;
+            //Page<Delivery> deliverys = deliveryRepository.findByNombreContainingOrApellidoContaining(filtro, filtro, pageable);
+            //Page<Delivery> deliverys = deliveryRepository.search(filtro, pageable);
+            Page<Delivery> deliverys = deliveryRepository.searchNativo(filtro, pageable);
+            return deliverys;
 
         } catch (Exception e){
             throw new Exception(e.getMessage());
