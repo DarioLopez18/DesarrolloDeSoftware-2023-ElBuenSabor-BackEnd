@@ -6,6 +6,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "combo")
@@ -49,4 +50,9 @@ public class Combo extends Base {
     @Column(name = "fecha_baja")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaBaja;
+
+    @NotNull
+    @OneToMany()
+    @JoinColumn(name = "id_combo")
+    private List<ArticuloManufacturadoCombo> articuloManufacturadoCombos;
 }
