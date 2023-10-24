@@ -70,6 +70,4 @@ public class Factura extends Base {
             inverseJoinColumns = @JoinColumn(name = "id_detalleFactura")
     )
     private List<DetalleFactura> detalleFacturas = new ArrayList<DetalleFactura>();
-
-
 }
