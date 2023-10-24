@@ -64,6 +64,4 @@ public class Factura extends Base {
     private List<DetalleFactura> detalleFacturas;
 
 
-
-
 }
