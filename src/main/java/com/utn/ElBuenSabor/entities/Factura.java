@@ -58,6 +58,11 @@ public class Factura extends Base {
     private Date fechaBaja;
 
     @NotNull
+    @OneToOne
+    @JoinColumn(name = "id_pedido")
+    private Pedido pedido;
+
+    @NotNull
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinTable (
             name = "facturas_detalleFactura",
@@ -65,5 +70,4 @@ public class Factura extends Base {
             inverseJoinColumns = @JoinColumn(name = "id_detalleFactura")
     )
     private List<DetalleFactura> detalleFacturas = new ArrayList<DetalleFactura>();
-
 }
