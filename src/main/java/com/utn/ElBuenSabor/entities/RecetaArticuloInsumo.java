@@ -5,7 +5,7 @@ import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 @Entity
-@Table(name = "recetaArticuloInsumo")
+@Table(name = "pedido")
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
@@ -17,12 +17,10 @@ public class RecetaArticuloInsumo extends Base{
     @Column(name = "cantidad")
     private int cantidad;
 
-    /* ESTA RELACION SE MAPEA EN "RECETA"
     @NotNull
     @JoinColumn(name = "receta_articulo_insumo")
     @ManyToOne()
     private Receta recetaArticuloInsumo;
-    */
 
     @NotNull
     @ManyToOne()

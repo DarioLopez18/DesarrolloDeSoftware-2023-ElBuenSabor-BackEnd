@@ -6,7 +6,6 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
 import java.util.Date;
-import java.util.List;
 
 @Entity
 @Table(name = "receta")
@@ -34,8 +33,5 @@ public class Receta extends Base {
     @JoinColumn(name = "id_articulo_manufacturado")
     private ArticuloManufacturado articuloManufacturado;
 
-    @NotNull
-    @OneToMany()
-    @JoinColumn(name = "id_receta")
-    private List<RecetaArticuloInsumo> recetaArticuloInsumos;
+
 }
