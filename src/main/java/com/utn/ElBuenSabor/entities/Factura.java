@@ -57,12 +57,10 @@ public class Factura extends Base {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaBaja;
 
-    //-----Esta relacion creo que no va-----
-
-    //@NotNull
-    //@OneToOne
-    //@JoinColumn(name = "id_pedido")
-    //private Pedido pedido;
+    @NotNull
+    @OneToOne
+    @JoinColumn(name = "id_pedido")
+    private Pedido pedido;
 
     @NotNull
     @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
@@ -72,5 +70,6 @@ public class Factura extends Base {
             inverseJoinColumns = @JoinColumn(name = "id_detalleFactura")
     )
     private List<DetalleFactura> detalleFacturas = new ArrayList<DetalleFactura>();
+
 
 }
