@@ -52,7 +52,7 @@ public class ElBuenSaborApplication {
 					.rol(Rol.ADMINISTRADOR)
 					.build();
 			//guardar user
-			usuarioRepository.save(user1);
+			usuarioRepository.save(user2);
 
 			//Crea User
 			Usuario user3 = Usuario.builder()
@@ -61,7 +61,7 @@ public class ElBuenSaborApplication {
 					.rol(Rol.COCINERO)
 					.build();
 			//guardar user
-			usuarioRepository.save(user1);
+			usuarioRepository.save(user3);
 
 			//Crea User
 			Usuario user4 = Usuario.builder()
@@ -70,7 +70,7 @@ public class ElBuenSaborApplication {
 					.rol(Rol.DELIVERY)
 					.build();
 			//guardar user
-			usuarioRepository.save(user2);
+			usuarioRepository.save(user4);
 
 			//Crea y agrega domicilios al cliente asociado a este usuario
 			Cliente cliente1 = Cliente.builder()
