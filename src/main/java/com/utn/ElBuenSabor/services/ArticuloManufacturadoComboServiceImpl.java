@@ -9,7 +9,8 @@ public class ArticuloManufacturadoComboServiceImpl extends BaseServiceImpl<Artic
     @Autowired
     private ArticuloManufacturadoComboRepository articuloManufacturadoComboRepository;
 
-    public ArticuloManufacturadoComboServiceImpl(BaseRepository<ArticuloManufacturadoCombo,Long> baseRepository){
+    public ArticuloManufacturadoComboServiceImpl(BaseRepository<ArticuloManufacturadoCombo,Long> baseRepository, ArticuloManufacturadoComboRepository articuloManufacturadoComboRepository){
         super(baseRepository);
+        this.articuloManufacturadoComboRepository = articuloManufacturadoComboRepository;
     }
 }
