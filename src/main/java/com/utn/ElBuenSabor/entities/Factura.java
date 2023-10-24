@@ -57,17 +57,13 @@ public class Factura extends Base {
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaBaja;
 
-    @NotNull
-    @OneToOne
-    @JoinColumn(name = "id_pedido")
-    private Pedido pedido;
 
     @NotNull
-    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
-    @JoinTable (
-            name = "facturas_detalleFactura",
-            joinColumns = @JoinColumn(name = "id_factura"),
-            inverseJoinColumns = @JoinColumn(name = "id_detalleFactura")
-    )
-    private List<DetalleFactura> detalleFacturas = new ArrayList<DetalleFactura>();
+    @OneToMany()
+    @JoinColumn(name = "id_factura")
+    private List<DetalleFactura> detalleFacturas;
+
+
+
+
 }
