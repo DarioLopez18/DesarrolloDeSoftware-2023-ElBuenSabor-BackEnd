@@ -8,6 +8,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+
+import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -21,6 +23,8 @@ public class ElBuenSaborApplication {
 	public ClienteRepository clienteRepository;
 	@Autowired
 	public UsuarioRepository usuarioRepository;
+	@Autowired
+	public ArticuloManufacturadoRepository articuloManufacturadoRepository;
 
 
 	public static void main(String[] args) {
@@ -102,8 +106,20 @@ public class ElBuenSaborApplication {
 			//guardar cliente
 			clienteRepository.save(cliente1);
 
+			ArticuloManufacturado articuloManufacturado1 = ArticuloManufacturado.builder()
+					.costo(BigDecimal.valueOf(10.20))
+					.denominacion("Pizza")
+					.descripcion("Pizza con cebolla")
+					.fechaAlta(new Date())
+					.fechaBaja(null)
+					.fechaModificacion(null)
+					.precioVenta(BigDecimal.valueOf(15.20))
+					.categoria(CategoriaProducto.PIZZA)
+					.urlImagen("URLPizza")
 
+					.build();
 
+			articuloManufacturadoRepository.save(articuloManufacturado1);
 
 		};
 	}
