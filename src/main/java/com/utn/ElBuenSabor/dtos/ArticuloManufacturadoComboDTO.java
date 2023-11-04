@@ -1,15 +1,16 @@
 package com.utn.ElBuenSabor.dtos;
 
 import com.utn.ElBuenSabor.entities.ArticuloManufacturado;
-import com.utn.ElBuenSabor.entities.Carrito;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
+import java.util.Date;
+
 @EqualsAndHashCode(callSuper=false)
 @Data
-public class carritoPorducto extends GenericoDTO{
-    private int cantidadProductoCarrito;
-    private int numeroLinea;
-    private Carrito carrito;
+public class ArticuloManufacturadoComboDTO extends GenericoDTO {
+
+    private Date fechaHoraDesde;
+    private Date fechaHoraHasta;
     private ArticuloManufacturado articuloManufacturado;
 }
