@@ -4,7 +4,11 @@ import com.utn.ElBuenSabor.entities.Carrito;
 import com.utn.ElBuenSabor.repositories.BaseRepository;
 import com.utn.ElBuenSabor.repositories.CarritoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class CarritoServiceImpl extends BaseServiceImpl<Carrito, Long> implements CarritoService{
@@ -14,5 +18,25 @@ public class CarritoServiceImpl extends BaseServiceImpl<Carrito, Long> implement
     public CarritoServiceImpl(BaseRepository<Carrito, Long> baseRepository, CarritoRepository carritoRepository) {
         super(baseRepository);
         this.carritoRepository = carritoRepository;
+    }
+
+    @Override
+    public List<Carrito> search(Integer filtro) throws Exception{
+        try{
+            List<Carrito> carritos = carritoRepository.findByNumeroCarritoContaining(filtro);
+            return carritos;
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public Page<Carrito> search(Integer filtro, Pageable pageable) throws Exception{
+        try{
+            Page<Carrito> carritos = carritoRepository.findByNumeroCarritoContaining(filtro,pageable);
+            return carritos;
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
     }
 }

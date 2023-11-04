@@ -36,7 +36,7 @@ public class Domicilio extends Base {
 
     @Column(name = "piso_vivienda")
     private Integer pisoDpto;
-
+//ESTO SE MAPEA EN CLIENTE PERO SINO DA ERROR Y NO EJECTUTA
     @NotNull
     @ManyToOne()
     @JoinColumn(name = "id_cliente")

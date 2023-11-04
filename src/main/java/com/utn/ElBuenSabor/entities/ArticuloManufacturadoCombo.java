@@ -29,9 +29,11 @@ public class ArticuloManufacturadoCombo extends Base{
     @JoinColumn(name = "id_articulo_manufacturado")
     private ArticuloManufacturado articuloManufacturado;
 
+    /* ESTA RELACION SE MAPEA EN COMBO
     @NotNull
     @ManyToOne()
     @JoinColumn(name = "id_combo")
     private Combo articuloManufacturadoCombo;
+     */
 
 }

@@ -19,11 +19,11 @@ public class CarritoProducto extends Base{
     @NotNull
     @Column(name="numeroLinea")
     private int numeroLinea;
-
-    @NotNull
-    @ManyToOne()
-    @JoinColumn(name = "id_carrito")
-    private Carrito carrito;
+//ESTO SE MAPEA EN PRODUCTO
+//    @NotNull
+//    @ManyToOne()
+//    @JoinColumn(name = "id_carrito")
+//    private Carrito carrito;
 
     @NotNull
     @ManyToOne()

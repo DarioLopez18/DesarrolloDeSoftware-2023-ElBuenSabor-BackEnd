@@ -27,7 +27,7 @@ public class DetallePedidoArticuloManufacturado extends Base {
     @NotNull
     @Column(name="subTotalCosto", precision = 10, scale = 2)
     private BigDecimal subTotalCosto;
-
+//ESTA RELACION SE MAPEA EN PEDIDO
     @NotNull
     @ManyToOne()
     @JoinColumn(name = "id_detallePedido")

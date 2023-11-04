@@ -6,6 +6,7 @@ import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
+import java.util.List;
 
 @Entity
 @Table(name = "detalle_factura")
@@ -24,7 +25,8 @@ public class DetalleFactura extends Base {
     private BigDecimal subtotal;
 
     @ManyToOne()
-    @JoinColumn(name = "id_articulo_manufacturado")
+    @JoinColumn(name = "id_articuloManufacturado")
     private ArticuloManufacturado articuloManufacturado;
+
 
 }
