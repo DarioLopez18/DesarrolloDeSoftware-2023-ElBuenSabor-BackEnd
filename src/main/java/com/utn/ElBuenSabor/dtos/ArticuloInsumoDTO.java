@@ -4,11 +4,15 @@ import com.utn.ElBuenSabor.entities.RubroArticulo;
 import com.utn.ElBuenSabor.entities.UnidadMedida;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 
 import java.math.BigDecimal;
 import java.util.Date;
 
+@Setter
+@Getter
 @EqualsAndHashCode(callSuper=false)
 @Data
 public class ArticuloInsumoDTO extends GenericoDTO {
