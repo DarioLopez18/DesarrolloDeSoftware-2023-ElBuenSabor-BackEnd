@@ -25,8 +25,16 @@ public class ElBuenSaborApplication {
 	public UsuarioRepository usuarioRepository;
 	@Autowired
 	public ArticuloManufacturadoRepository articuloManufacturadoRepository;
-
-
+	@Autowired
+	public UnidadMedidaRepository unidadMedidaRepository;
+	@Autowired
+	public ArticuloInsumoRepository articuloInsumoRepository;
+	@Autowired
+	public RubroArticuloRepository rubroArticuloRepository;
+	@Autowired
+	public RecetaArticuloInsumoRepository recetaArticuloInsumoRepository;
+	@Autowired
+	public RecetaRepository recetaRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(ElBuenSaborApplication.class, args);
 	}
@@ -121,6 +129,56 @@ public class ElBuenSaborApplication {
 
 			articuloManufacturadoRepository.save(articuloManufacturado1);
 
+			UnidadMedida unidadMedidaKg = UnidadMedida.builder()
+					.abreviatura("kg")
+					.denominacion("Kilogramo")
+					.fechaAlta(new Date())
+					.fechaBaja(null)
+					.fechaModificacion(null)
+
+					.build();
+
+			unidadMedidaRepository.save(unidadMedidaKg);
+
+			RubroArticulo rubroArticuloHarina = RubroArticulo.builder()
+					.denominacion("Harina")
+					.fechaAlta(new Date())
+					.fechaBaja(null)
+					.fechaModificacion(null)
+					.rubroPadre(null)
+					.subRubros(null)
+					.build();
+			rubroArticuloRepository.save((rubroArticuloHarina));
+
+			ArticuloInsumo articuloInsumoHarina = ArticuloInsumo.builder()
+					.denominacion("Harina")
+					.fechaAlta(new Date())
+					.fechaBaja(null)
+					.fechaModificacion(null)
+					.precioCompra(BigDecimal.valueOf(15.00))
+					.stockActual(BigDecimal.valueOf(20.00))
+					.stockMinimo(BigDecimal.valueOf(10.00))
+					.urlImagen(null)
+					.unidadMedida(unidadMedidaKg)
+					.rubroArticulo(rubroArticuloHarina)
+					.build();
+			articuloInsumoRepository.save(articuloInsumoHarina);
+			RecetaArticuloInsumo recetaArticuloInsumoMasaPizza = RecetaArticuloInsumo.builder()
+					.cantidad(1)
+					.articuloInsumo(articuloInsumoHarina)
+					.build();
+			recetaArticuloInsumoRepository.save(recetaArticuloInsumoMasaPizza);
+
+			Receta recetaMasaPizza = Receta.builder()
+					.nombreReceta("MasapPizza")
+					.procedimientoReceta("Mezclar todos los ingredientes")
+					.recetaArticuloInsumos(null)
+					.tiempoPreparacion(10)
+					.build();
+			recetaRepository.save(recetaMasaPizza);
 		};
+
+
+
 	}
 }
