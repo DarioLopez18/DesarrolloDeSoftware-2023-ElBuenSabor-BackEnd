@@ -21,4 +21,8 @@ public interface ArticuloManufacturadoRepository extends BaseRepository<Articulo
 
     @Query(value = "SELECT a FROM ArticuloManufacturado a WHERE a.denominacion LIKE %:filtro%")
     Page<ArticuloManufacturado> search(@Param("filtro") String filtro, Pageable pageable);
+
+    @Query(value = "SELECT * FROM ArticuloManufacturado WHERE fechaBaja = false",
+    nativeQuery = true)
+    List<ArticuloManufacturado> listarArticulosManufacturados();
 }

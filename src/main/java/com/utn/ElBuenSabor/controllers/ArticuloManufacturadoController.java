@@ -11,6 +11,15 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping(path = "api/v1/articulosManufacturados")
 public class ArticuloManufacturadoController extends BaseControllerImpl<ArticuloManufacturado, ArticuloManufacturadoServiceImpl> {
 
+        @GetMapping("/listar")
+        public ResponseEntity<?> listar (){
+            try {
+                return ResponseEntity.status(HttpStatus.OK).body(servicio.listarArticuloManufacturados());
+            }catch (Exception e){
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+            }
+        }
+
         @GetMapping("/search")
         public ResponseEntity<?> search(@RequestParam String filtro){
             try {
@@ -28,4 +37,5 @@ public class ArticuloManufacturadoController extends BaseControllerImpl<Articulo
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
             }
         }
+
 }
