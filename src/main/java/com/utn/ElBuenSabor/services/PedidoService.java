@@ -12,4 +12,8 @@ public interface PedidoService extends BaseService<Pedido,Long>{
     List<Pedido> search(Long filtro) throws Exception;
 
     Page<Pedido> search(Long filtro, Pageable pageable) throws Exception;
+
+    List<Pedido> pedidosRealizadosCliente(Long id) throws Exception;
+
+    List<Pedido> pedidosConEstado(String nombreEstado) throws Exception;
 }

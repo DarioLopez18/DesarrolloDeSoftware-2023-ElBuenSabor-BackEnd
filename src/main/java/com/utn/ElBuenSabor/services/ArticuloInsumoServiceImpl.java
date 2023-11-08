@@ -42,4 +42,15 @@ public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo, L
             throw new Exception(e.getMessage());
         }
     }
+
+    @Override
+    public List<ArticuloInsumo> articulosConBajoStock(int stockMinimo) throws Exception {
+        try{
+            List<ArticuloInsumo> articuloInsumos = articuloInsumoRepository.articulosConBajoStock(stockMinimo);
+            return articuloInsumos;
+
+        } catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
 }

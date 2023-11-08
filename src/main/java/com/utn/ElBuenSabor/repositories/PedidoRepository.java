@@ -23,4 +23,10 @@ public interface PedidoRepository extends BaseRepository<Pedido,Long> {
     @Query(value = "SELECT p FROM Pedido p WHERE p.id LIKE %:filtro%")
     Page<Pedido> search(@Param("filtro") Long filtro, Pageable pageable);
 
+    @Query(value = "SELECT * FROM Pedido p WHERE p.id_cliente = :id",nativeQuery = true)
+    List<Pedido> pedidosRealizadosCliente(@Param("id") Long id);
+
+    @Query(value = "SELECT * FROM Pedido p WHERE p.estado = :nombreEstado",nativeQuery = true)
+    List<Pedido> pedidosConEstado(@Param("nombreEstado") String nombreEstado);
+
 }

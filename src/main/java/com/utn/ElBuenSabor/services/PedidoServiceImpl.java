@@ -39,4 +39,24 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements P
             throw new Exception(e.getMessage());
         }
     }
+
+    @Override
+    public List<Pedido> pedidosRealizadosCliente(Long id) throws Exception{
+        try{
+            List<Pedido> pedidos = pedidoRepository.pedidosRealizadosCliente(id);
+            return pedidos;
+        } catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<Pedido> pedidosConEstado(String nombreEstado) throws Exception{
+        try{
+            List<Pedido> pedidos = pedidoRepository.pedidosConEstado(nombreEstado);
+            return pedidos;
+        } catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
 }

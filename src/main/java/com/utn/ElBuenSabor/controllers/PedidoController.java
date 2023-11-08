@@ -27,4 +27,22 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
     }
+
+    @GetMapping("/pedidosCliente")
+    public ResponseEntity<?> pedidosRealizadosCliente(@RequestParam Long id){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.pedidosRealizadosCliente(id));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+        }
+    }
+
+    @GetMapping("/pedidosEstado")
+    public ResponseEntity<?> pedidosConEstado(@RequestParam String nombreEstado){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.pedidosConEstado(nombreEstado));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+        }
+    }
 }
