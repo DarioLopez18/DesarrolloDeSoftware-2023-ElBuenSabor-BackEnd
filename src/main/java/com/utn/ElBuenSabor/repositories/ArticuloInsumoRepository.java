@@ -17,14 +17,14 @@ public interface ArticuloInsumoRepository extends BaseRepository<ArticuloInsumo,
             value = "SELECT * FROM articulo_insumo WHERE articulo_insumo.denominacion LIKE %:filtro%",
             nativeQuery = true
     )
-    List<ArticuloInsumo> search(@Param("filtro") String filtro);
+    List<ArticuloInsumo> searchNativo(@Param("filtro") String filtro);
 
     @Query(
             value = "SELECT * FROM articulo_insumo WHERE articulo_insumo.denominacion LIKE %:filtro%",
             countQuery = "SELECT count(*) FROM articulo_insumo",
             nativeQuery = true
     )
-    Page<ArticuloInsumo> search(@Param("filtro") String filtro, Pageable pageable);
+    Page<ArticuloInsumo> searchNativo(@Param("filtro") String filtro, Pageable pageable);
 
     @Query(
             value = "SELECT i FROM articulo_insumo i " +

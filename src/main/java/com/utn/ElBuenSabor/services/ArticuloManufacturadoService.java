@@ -2,6 +2,7 @@ package com.utn.ElBuenSabor.services;
 
 import com.utn.ElBuenSabor.dtos.DTORankingArticulosManufacturados;
 import com.utn.ElBuenSabor.entities.ArticuloManufacturado;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
@@ -18,4 +19,3 @@ public interface ArticuloManufacturadoService extends BaseService<ArticuloManufa
 
     Page<ArticuloManufacturado> porRubro(String denominacion, Pageable pageable) throws Exception;
 }
-

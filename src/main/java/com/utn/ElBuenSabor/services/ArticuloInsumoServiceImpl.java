@@ -24,7 +24,7 @@ public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo,Lo
     @Override
     public List<ArticuloInsumo> search(String filtro) throws Exception {
         try{
-            List<ArticuloInsumo> articuloInsumo = articuloInsumoRepository.search(filtro);
+            List<ArticuloInsumo> articuloInsumo = articuloInsumoRepository.searchNativo(filtro);
             return articuloInsumo;
         } catch (Exception e){
             throw new Exception(e.getMessage());
@@ -34,7 +34,7 @@ public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo,Lo
     @Override
     public Page<ArticuloInsumo> search(String filtro, Pageable pageable) throws Exception {
         try{
-            Page<ArticuloInsumo> articuloInsumo = articuloInsumoRepository.search(filtro, pageable);
+            Page<ArticuloInsumo> articuloInsumo = articuloInsumoRepository.searchNativo(filtro, pageable);
             return articuloInsumo;
         } catch (Exception e){
             throw new Exception(e.getMessage());
