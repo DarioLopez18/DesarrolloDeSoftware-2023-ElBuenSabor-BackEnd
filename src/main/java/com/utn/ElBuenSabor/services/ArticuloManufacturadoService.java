@@ -1,9 +1,6 @@
 package com.utn.ElBuenSabor.services;
 
-import com.tup.buensabor.dtos.DTORankingArticulosManufacturados;
-import com.tup.buensabor.entities.ArticuloManufacturado;
-import com.tup.buensabor.entities.Pedido;
-import com.tup.buensabor.entities.RubroArticuloManufacturado;
+import com.utn.ElBuenSabor.dtos.DTORankingArticulosManufacturados;
 import com.utn.ElBuenSabor.entities.ArticuloManufacturado;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
