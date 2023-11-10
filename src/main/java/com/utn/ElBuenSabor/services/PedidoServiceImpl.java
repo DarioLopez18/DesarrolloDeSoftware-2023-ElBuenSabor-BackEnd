@@ -1,9 +1,10 @@
 package com.utn.ElBuenSabor.services;
 
-import com.utn.ElBuenSabor.entities.Factura;
+import com.utn.ElBuenSabor.dtos.DTOCambiarEstado;
 import com.utn.ElBuenSabor.entities.Pedido;
 import com.utn.ElBuenSabor.repositories.BaseRepository;
 import com.utn.ElBuenSabor.repositories.PedidoRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -12,50 +13,48 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class PedidoServiceImpl extends BaseServiceImpl<Pedido,Long> implements PedidoService{
+public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements PedidoService {
+
     @Autowired
     private PedidoRepository pedidoRepository;
 
-    public PedidoServiceImpl(BaseRepository<Pedido,Long> baseRepository){
+    public PedidoServiceImpl(BaseRepository<Pedido, Long> baseRepository, PedidoRepository pedidoRepository) {
         super(baseRepository);
+        this.pedidoRepository = pedidoRepository;
     }
 
     @Override
-    public List<Pedido> search(Long filtro) throws Exception {
+    public List<Pedido> search(String filtro) throws Exception {
         try{
-            List<Pedido> pedidos = pedidoRepository.findByIdContaining(filtro);
-            return pedidos;
+            List<Pedido> pedido = pedidoRepository.searchNativo(filtro);
+            return pedido;
         } catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
 
     @Override
-    public Page<Pedido> search(Long filtro, Pageable pageable) throws Exception {
+    public Page<Pedido> search(String filtro, Pageable pageable) throws Exception {
         try{
-            Page<Pedido> pedidos = pedidoRepository.findByIdContaining (filtro, pageable);
-            return pedidos;
+            Page<Pedido> pedido = pedidoRepository.searchNativo(filtro, pageable);
+            return pedido;
         } catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
 
+    //Cambiar estado pedido
     @Override
-    public List<Pedido> pedidosRealizadosCliente(Long id) throws Exception{
+    public Pedido cambiarEstado(DTOCambiarEstado cambiarEstadoDTO) throws Exception{
         try{
-            List<Pedido> pedidos = pedidoRepository.pedidosRealizadosCliente(id);
-            return pedidos;
-        } catch (Exception e){
-            throw new Exception(e.getMessage());
-        }
-    }
+            Pedido pedido = pedidoRepository.findById(cambiarEstadoDTO.getIdPedido()).get();
 
-    @Override
-    public List<Pedido> pedidosConEstado(String nombreEstado) throws Exception{
-        try{
-            List<Pedido> pedidos = pedidoRepository.pedidosConEstado(nombreEstado);
-            return pedidos;
-        } catch (Exception e){
+            pedido.setEstado(cambiarEstadoDTO.getEstadoPedido());
+
+            pedidoRepository.save(pedido);
+
+            return pedido;
+        }catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
