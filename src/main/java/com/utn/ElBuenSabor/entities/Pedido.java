@@ -86,6 +86,6 @@ public class Pedido extends Base {
     @NotNull
     @OneToMany()
     @JoinColumn(name = "id_pedido")
-    private List<DetallePedidoArticuloManufacturado> detallePedidoArticuloManufacturados;
+    private List<DetalleArticuloManufacturado> detallePedidoArticuloManufacturados;
 
 }
