@@ -1,11 +1,14 @@
-package com.utn.ElBuenSabor.entities;
+package com.tup.buensabor.entities;
 
+import com.utn.ElBuenSabor.entities.ArticuloInsumo;
+import com.utn.ElBuenSabor.entities.Base;
 import jakarta.persistence.*;
 
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
+
 
 @Entity
 @Table(name = "detalle_articulo_manufacturado")
@@ -18,7 +21,7 @@ public class DetalleArticuloManufacturado extends Base {
 
     @NotNull
     @Column(name = "cantidad", precision = 10, scale = 2)
-    private Integer cantidad;
+    private BigDecimal cantidad;
 
     @NotNull
     @ManyToOne()

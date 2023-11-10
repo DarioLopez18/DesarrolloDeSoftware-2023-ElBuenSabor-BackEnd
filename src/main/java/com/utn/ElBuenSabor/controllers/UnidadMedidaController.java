@@ -1,6 +1,5 @@
 package com.utn.ElBuenSabor.controllers;
 
-import com.utn.ElBuenSabor.entities.UnidadMedida;
 import com.utn.ElBuenSabor.services.UnidadMedidaServiceImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;

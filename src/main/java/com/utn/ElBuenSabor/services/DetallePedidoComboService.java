@@ -1,7 +1,7 @@
 package com.utn.ElBuenSabor.services;
 
-import com.utn.ElBuenSabor.entities.DetallePedidoCombo;
+import com.utn.ElBuenSabor.entities.DetallePedido;
 
-public interface DetallePedidoComboService extends BaseService<DetallePedidoCombo,Long>{
+public interface DetallePedidoComboService extends BaseService<DetallePedido,Long>{
 
 }

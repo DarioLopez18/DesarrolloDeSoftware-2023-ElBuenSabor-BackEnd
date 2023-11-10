@@ -4,9 +4,12 @@ import com.utn.ElBuenSabor.enums.EstadoPedido;
 import com.utn.ElBuenSabor.enums.FormaPago;
 import com.utn.ElBuenSabor.enums.TipoEnvio;
 import jakarta.persistence.*;
+
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
+
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -38,6 +41,7 @@ public class Pedido extends Base {
     private BigDecimal totalCosto;
 
     @NotNull
+    @Column(name = "estado")
     @Enumerated(EnumType.STRING)
     private EstadoPedido estado;
 
@@ -58,34 +62,31 @@ public class Pedido extends Base {
     @NotNull
     @ManyToOne()
     @JoinColumn(name = "id_cliente")
-    private Cliente cliente;
+    private Persona persona;
 
     @NotNull
-    @OneToOne()
-    @JoinColumn(name = "id_carrito")
-    private Carrito carrito;
-
-    @NotNull
-    @Column(name = "fecha_alta")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
-
-    @Column(name = "fecha_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;
-
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
-
-
-    @OneToOne()
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "id_factura")
     private Factura factura;
 
-    @NotNull
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "id_pedido")
-    private List<DetalleArticuloManufacturado> detallePedidoArticuloManufacturados;
+    @Builder.Default
+    private List<DetallePedido> detalles = new ArrayList<>();
 
+
+
+    public void agregarDetalle(DetallePedido detallePedido){
+
+        detalles.add(detallePedido);
+    }
+
+    //MÉTODO DE MOSTRAR DETALLES
+    public void mostrarDetalles(){
+        int contador = 0;
+        for (DetallePedido detallePedido: detalles){
+            System.out.println("Línea numero: " + contador + ", Producto" + detallePedido.getArticuloManufacturado() + ", cantidad pedida: " + detallePedido.getCantidad() + ", subtotal: " + detallePedido.getSubtotal());
+            contador = contador + 1;
+        }
+    }
 }

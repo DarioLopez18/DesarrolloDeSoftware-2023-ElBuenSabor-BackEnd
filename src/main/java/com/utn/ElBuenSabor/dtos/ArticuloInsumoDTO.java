@@ -1,7 +1,6 @@
 package com.utn.ElBuenSabor.dtos;
 
-import com.utn.ElBuenSabor.entities.RubroArticulo;
-import com.utn.ElBuenSabor.entities.UnidadMedida;
+import com.utn.ElBuenSabor.entities.RubroArticuloManufacturado;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -22,7 +21,7 @@ public class ArticuloInsumoDTO extends GenericoDTO {
     private BigDecimal stockActual;
     private BigDecimal stockMinimo;
     private UnidadMedida unidadMedida;
-    private RubroArticulo rubroArticulo;
+    private RubroArticuloManufacturado rubroArticulo;
     private Date fechaAlta;
     private Date fechaModificacion;
     private Date fechaBaja;

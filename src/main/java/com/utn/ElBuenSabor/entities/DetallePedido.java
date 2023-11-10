@@ -6,7 +6,6 @@ import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
-
 @Entity
 @Table(name = "detalle_pedido")
 @NoArgsConstructor
@@ -14,7 +13,7 @@ import java.math.BigDecimal;
 @Getter
 @Setter
 @Builder
-public class DetallePedidoCombo extends Base {
+public class DetallePedido extends Base {
 
     @NotNull
     private Integer cantidad;
@@ -28,12 +27,7 @@ public class DetallePedidoCombo extends Base {
     private BigDecimal subtotalCosto;
 
     @ManyToOne()
-    @JoinColumn(name = "id_combo")
-    private Combo combo;
-
-    @NotNull
-    @ManyToOne()
-    @JoinColumn(name = "id_pedido")
-    private Pedido pedido;
+    @JoinColumn(name = "id_articulo_manufacturado")
+    private ArticuloManufacturado articuloManufacturado;
 
 }

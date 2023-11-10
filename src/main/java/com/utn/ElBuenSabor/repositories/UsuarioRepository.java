@@ -1,6 +1,5 @@
 package com.utn.ElBuenSabor.repositories;
 
-import com.utn.ElBuenSabor.entities.Usuario;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;

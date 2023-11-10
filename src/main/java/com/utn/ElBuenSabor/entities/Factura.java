@@ -2,10 +2,12 @@ package com.utn.ElBuenSabor.entities;
 
 import com.utn.ElBuenSabor.enums.FormaPago;
 import jakarta.persistence.*;
+
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -16,7 +18,6 @@ import java.util.List;
 @Getter
 @Setter
 @Builder
-
 public class Factura extends Base {
 
     @NotNull
@@ -37,30 +38,25 @@ public class Factura extends Base {
     private String mpPaymentType;
 
     @NotNull
+    @Column(name = "FORMAPAGO")
+    @Enumerated(EnumType.STRING)
     private FormaPago formaPago;
+
+
 
     @NotNull
     @Column(name = "total_venta", precision = 10, scale = 2)
     private BigDecimal totalVenta;
 
-    @NotNull
-    @Column(name = "fecha_alta")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
-
-    @Column(name = "fecha_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;
-
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
-
-
-    @NotNull
-    @OneToMany()
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
     @JoinColumn(name = "id_factura")
-    private List<DetalleFactura> detalleFacturas;
+    @Builder.Default
+    private List<DetalleFactura> detalles = new ArrayList<>();
+
+    public void agregarDetalle(DetalleFactura detalleFactura){
+        detalles.add(detalleFactura);
+
+    }
 
 
 }

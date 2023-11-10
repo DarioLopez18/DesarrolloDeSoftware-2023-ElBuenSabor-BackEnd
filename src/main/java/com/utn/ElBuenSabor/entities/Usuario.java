@@ -1,18 +1,17 @@
 package com.utn.ElBuenSabor.entities;
 
-import com.utn.ElBuenSabor.enums.Rol;
 import jakarta.persistence.*;
+
 import lombok.*;
 import org.antlr.v4.runtime.misc.NotNull;
-import java.util.Date;
 
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-@Builder
 @Table(name = "usuario")
+@Builder
 public class Usuario extends Base {
 
     @NotNull
@@ -24,20 +23,8 @@ public class Usuario extends Base {
     private String username;
 
     @NotNull
-    @Column(name = "rol", nullable = false)
-    private Rol rol;
+    @Column (name = "password", nullable = false)
+    private String password;
 
-    @NotNull
-    @Column(name = "fecha_alta")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
-
-    @Column(name = "fecha_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;
-
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
 
 }

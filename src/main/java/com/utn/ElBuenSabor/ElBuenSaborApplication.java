@@ -140,7 +140,7 @@ public class ElBuenSaborApplication {
 
 			unidadMedidaRepository.save(unidadMedidaKg);
 
-			RubroArticulo rubroArticuloHarina = RubroArticulo.builder()
+			RubroArticuloManufacturado rubroArticuloHarina = RubroArticuloManufacturado.builder()
 					.denominacion("Harina")
 					.fechaAlta(new Date())
 					.fechaBaja(null)
@@ -163,7 +163,7 @@ public class ElBuenSaborApplication {
 					.rubroArticulo(rubroArticuloHarina)
 					.build();
 			articuloInsumoRepository.save(articuloInsumoHarina);
-			RecetaArticuloInsumo recetaArticuloInsumoMasaPizza = RecetaArticuloInsumo.builder()
+			RubroArticuloInsumo recetaArticuloInsumoMasaPizza = RubroArticuloInsumo.builder()
 					.cantidad(1)
 					.articuloInsumo(articuloInsumoHarina)
 					.build();

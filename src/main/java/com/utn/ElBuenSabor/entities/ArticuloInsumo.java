@@ -42,6 +42,6 @@ public class ArticuloInsumo extends Base {
     @NotNull
     @ManyToOne()
     @JoinColumn(name = "id_rubro_articulo")
-    private RubroArticulo rubroArticulo;
+    private RubroArticuloManufacturado rubroArticulo;
 
 }
