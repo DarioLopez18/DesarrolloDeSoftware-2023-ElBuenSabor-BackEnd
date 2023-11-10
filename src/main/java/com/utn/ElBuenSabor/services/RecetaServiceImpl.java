@@ -1,9 +1,7 @@
 package com.utn.ElBuenSabor.services;
 
-import com.utn.ElBuenSabor.entities.Cliente;
 import com.utn.ElBuenSabor.entities.Receta;
 import com.utn.ElBuenSabor.repositories.BaseRepository;
-import com.utn.ElBuenSabor.repositories.DomicilioRepository;
 import com.utn.ElBuenSabor.repositories.RecetaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;

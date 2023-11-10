@@ -1,6 +1,5 @@
 package com.utn.ElBuenSabor.controllers;
 
-import com.utn.ElBuenSabor.entities.Combo;
 import com.utn.ElBuenSabor.services.ComboServiceImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;

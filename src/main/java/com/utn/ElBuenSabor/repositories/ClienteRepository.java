@@ -1,6 +1,5 @@
 package com.utn.ElBuenSabor.repositories;
 
-import com.utn.ElBuenSabor.entities.Cliente;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import org.springframework.data.jpa.repository.Query;

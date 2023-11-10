@@ -1,6 +1,5 @@
 package com.utn.ElBuenSabor.services;
 
-import com.utn.ElBuenSabor.entities.ArticuloManufacturadoCombo;
 import com.utn.ElBuenSabor.repositories.ArticuloManufacturadoComboRepository;
 import com.utn.ElBuenSabor.repositories.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;

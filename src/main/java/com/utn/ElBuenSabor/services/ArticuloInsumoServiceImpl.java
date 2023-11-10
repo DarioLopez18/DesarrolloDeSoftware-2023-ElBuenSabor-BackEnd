@@ -1,7 +1,6 @@
 package com.utn.ElBuenSabor.services;
 
 import com.utn.ElBuenSabor.entities.ArticuloInsumo;
-import com.utn.ElBuenSabor.entities.Cliente;
 import com.utn.ElBuenSabor.repositories.ArticuloInsumoRepository;
 import com.utn.ElBuenSabor.repositories.BaseRepository;
 import org.springframework.beans.factory.annotation.Autowired;

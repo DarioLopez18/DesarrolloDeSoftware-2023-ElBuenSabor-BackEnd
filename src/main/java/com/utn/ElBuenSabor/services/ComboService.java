@@ -1,7 +1,5 @@
 package com.utn.ElBuenSabor.services;
 
-import com.utn.ElBuenSabor.entities.Combo;
-import com.utn.ElBuenSabor.entities.Receta;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
