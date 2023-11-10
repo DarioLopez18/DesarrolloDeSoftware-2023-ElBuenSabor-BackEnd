@@ -1,6 +1,5 @@
 package com.utn.ElBuenSabor.services;
 
-import com.utn.ElBuenSabor.dtos.ArticuloManufacturadoDTO;
 import com.utn.ElBuenSabor.entities.ArticuloManufacturado;
 import com.utn.ElBuenSabor.repositories.ArticuloManufacturadoRepository;
 import com.utn.ElBuenSabor.repositories.BaseRepository;

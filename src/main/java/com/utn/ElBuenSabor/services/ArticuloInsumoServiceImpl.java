@@ -11,7 +11,8 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 
 @Service
-public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo, Long> implements ArticuloInsumoService{
+public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo,Long> implements ArticuloInsumoService{
+
     @Autowired
     private ArticuloInsumoRepository articuloInsumoRepository;
 
@@ -23,9 +24,8 @@ public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo, L
     @Override
     public List<ArticuloInsumo> search(String filtro) throws Exception {
         try{
-            List<ArticuloInsumo> articuloInsumos = articuloInsumoRepository.findByDenominacionContaining(filtro);
-            return articuloInsumos;
-
+            List<ArticuloInsumo> articuloInsumo = articuloInsumoRepository.search(filtro);
+            return articuloInsumo;
         } catch (Exception e){
             throw new Exception(e.getMessage());
         }
@@ -34,21 +34,18 @@ public class ArticuloInsumoServiceImpl extends BaseServiceImpl<ArticuloInsumo, L
     @Override
     public Page<ArticuloInsumo> search(String filtro, Pageable pageable) throws Exception {
         try{
-            Page<ArticuloInsumo> articuloInsumos = articuloInsumoRepository.findByDenominacionContaining(filtro, pageable);
-            return articuloInsumos;
-
+            Page<ArticuloInsumo> articuloInsumo = articuloInsumoRepository.search(filtro, pageable);
+            return articuloInsumo;
         } catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
-
     @Override
-    public List<ArticuloInsumo> articulosConBajoStock(int stockMinimo) throws Exception {
+    public Page<ArticuloInsumo> getStockBajo(Pageable pageable) throws Exception{
         try{
-            List<ArticuloInsumo> articuloInsumos = articuloInsumoRepository.articulosConBajoStock(stockMinimo);
-            return articuloInsumos;
-
-        } catch (Exception e){
+            Page<ArticuloInsumo> insumo=articuloInsumoRepository.getStockBajo(pageable);
+            return insumo;
+        }catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
