@@ -1,4 +1,0 @@
-package com.utn.ElBuenSabor.controllers;
-
-public class ArticuloManufacturadoComboController extends BaseControllerImpl<ArticuloManufacturadoCombo, ArticuloManufacturadoComboServiceImpl>{
-}

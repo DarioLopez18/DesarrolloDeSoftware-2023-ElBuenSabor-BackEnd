@@ -1,7 +1,7 @@
 package com.utn.ElBuenSabor.repositories;
 
 import com.utn.ElBuenSabor.entities.ArticuloInsumo;
-import com.utn.ElBuenSabor.entities.Pedido;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -9,18 +9,27 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+
 @Repository
-public interface ArticuloInsumoRepository extends BaseRepository<ArticuloInsumo,Long>{
-    List<ArticuloInsumo> findByDenominacionContaining(String denominacion);
+public interface ArticuloInsumoRepository extends BaseRepository<ArticuloInsumo, Long> {
 
-    Page<ArticuloInsumo> findByDenominacionContaining(String denominacion, Pageable pageable);
-
-    @Query(value = "SELECT a FROM ArticuloInsumo a WHERE a.denominacion LIKE %:filtro%")
+    @Query(
+            value = "SELECT * FROM articulo_insumo WHERE articulo_insumo.denominacion LIKE %:filtro%",
+            nativeQuery = true
+    )
     List<ArticuloInsumo> search(@Param("filtro") String filtro);
 
-    @Query(value = "SELECT a FROM ArticuloInsumo a WHERE a.denominacion LIKE %:filtro%")
+    @Query(
+            value = "SELECT * FROM articulo_insumo WHERE articulo_insumo.denominacion LIKE %:filtro%",
+            countQuery = "SELECT count(*) FROM articulo_insumo",
+            nativeQuery = true
+    )
     Page<ArticuloInsumo> search(@Param("filtro") String filtro, Pageable pageable);
 
-    @Query(value = "SELECT * FROM ArticuloInsumo a WHERE a.stock_actual = :stockMinimo",nativeQuery = true)
-    List<ArticuloInsumo> articulosConBajoStock(@Param("stockMinimo") int stockMinimo);
+    @Query(
+            value = "SELECT i FROM articulo_insumo i " +
+                    "WHERE stockActual <= stockMinimo * 1.20",
+            countQuery = "SELECT count(*) FROM articulo_insumo",
+            nativeQuery = true)
+    Page<ArticuloInsumo> getStockBajo(Pageable pageable);
 }

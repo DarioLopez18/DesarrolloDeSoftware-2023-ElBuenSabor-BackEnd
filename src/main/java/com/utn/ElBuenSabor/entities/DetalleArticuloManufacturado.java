@@ -1,7 +1,5 @@
-package com.tup.buensabor.entities;
+package com.utn.ElBuenSabor.entities;
 
-import com.utn.ElBuenSabor.entities.ArticuloInsumo;
-import com.utn.ElBuenSabor.entities.Base;
 import jakarta.persistence.*;
 
 import lombok.*;

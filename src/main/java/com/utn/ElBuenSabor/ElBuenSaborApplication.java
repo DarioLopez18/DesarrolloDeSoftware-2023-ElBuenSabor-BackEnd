@@ -30,9 +30,9 @@ public class ElBuenSaborApplication {
 	@Autowired
 	public ArticuloInsumoRepository articuloInsumoRepository;
 	@Autowired
-	public RubroArticuloRepository rubroArticuloRepository;
+	public RubroArticuloManufacturadoRepository rubroArticuloRepository;
 	@Autowired
-	public RecetaArticuloInsumoRepository recetaArticuloInsumoRepository;
+	public RubroArticuloInsumoRepository recetaArticuloInsumoRepository;
 	@Autowired
 	public RecetaRepository recetaRepository;
 	public static void main(String[] args) {

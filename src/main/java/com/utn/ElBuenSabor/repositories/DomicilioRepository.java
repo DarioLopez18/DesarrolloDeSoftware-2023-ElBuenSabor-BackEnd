@@ -1,6 +1,7 @@
 package com.utn.ElBuenSabor.repositories;
 
 import com.utn.ElBuenSabor.entities.Domicilio;
+
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.Query;
@@ -10,16 +11,20 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 
 @Repository
-public interface DomicilioRepository extends BaseRepository<Domicilio,Long>{
+public interface DomicilioRepository extends BaseRepository<Domicilio, Long> {
 
-    List<Domicilio> findByCalleContaining(String calle);
+    @Query(
+            value = "SELECT * FROM domicilio WHERE domicilio.localidad LIKE %:filtro%",
+            nativeQuery = true
+    )
+    List<Domicilio> searchNativo(@Param("filtro") String filtro);
 
-    Page<Domicilio> findByCalleContaining(String calle, Pageable pageable);
+    @Query(
+            value = "SELECT * FROM domicilio WHERE domicilio.localidad LIKE %:filtro%",
+            countQuery = "SELECT count(*) FROM domicilio",
+            nativeQuery = true
+    )
+    Page<Domicilio> searchNativo(@Param("filtro") String filtro, Pageable pageable);
 
-    @Query(value = "SELECT d FROM Domicilio d WHERE d.calle LIKE %:filtro%")
-    List<Domicilio> search(@Param("filtro") String filtro);
-
-    @Query(value = "SELECT d FROM Domicilio d WHERE d.calle LIKE %:filtro%")
-    Page<Domicilio> search(@Param("filtro") String filtro, Pageable pageable);
 
 }

@@ -1,9 +1,8 @@
 package com.utn.ElBuenSabor.services;
 
-import com.utn.ElBuenSabor.entities.Receta;
 import com.utn.ElBuenSabor.entities.RubroArticuloManufacturado;
 import com.utn.ElBuenSabor.repositories.BaseRepository;
-import com.utn.ElBuenSabor.repositories.RubroArticuloRepository;
+import com.utn.ElBuenSabor.repositories.RubroArticuloManufacturadoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,9 +13,9 @@ import java.util.List;
 @Service
 public class RubroArticuloServiceImpl extends BaseServiceImpl<RubroArticuloManufacturado,Long> implements RubroArticuloService{
     @Autowired
-    private RubroArticuloRepository rubroArticuloRepository;
+    private RubroArticuloManufacturadoRepository rubroArticuloRepository;
 
-    public RubroArticuloServiceImpl(BaseRepository<RubroArticuloManufacturado,Long> baseRepository, RubroArticuloRepository rubroArticuloRepository){
+    public RubroArticuloServiceImpl(BaseRepository<RubroArticuloManufacturado,Long> baseRepository, RubroArticuloManufacturadoRepository rubroArticuloRepository){
         super(baseRepository);
         this.rubroArticuloRepository = rubroArticuloRepository;
     }
