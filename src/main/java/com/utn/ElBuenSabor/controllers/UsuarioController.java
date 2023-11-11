@@ -1,6 +1,9 @@
 package com.utn.ElBuenSabor.controllers;
 
 
+import com.utn.ElBuenSabor.dtos.DTOCambiarContraseña;
+import com.utn.ElBuenSabor.entities.Usuario;
+import com.utn.ElBuenSabor.services.UsuarioServiceImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

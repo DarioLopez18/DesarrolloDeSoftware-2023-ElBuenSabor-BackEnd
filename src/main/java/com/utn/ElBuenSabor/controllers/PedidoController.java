@@ -1,5 +1,8 @@
 package com.utn.ElBuenSabor.controllers;
 
+import com.utn.ElBuenSabor.dtos.DTOCambiarEstado;
+import com.utn.ElBuenSabor.entities.Pedido;
+import com.utn.ElBuenSabor.services.PedidoServiceImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

@@ -1,5 +1,6 @@
 package com.utn.ElBuenSabor.controllers;
 
+import com.utn.ElBuenSabor.entities.RubroArticuloInsumo;
 import com.utn.ElBuenSabor.services.RecetaArticuloInsumoServiceImpl;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.RequestMapping;

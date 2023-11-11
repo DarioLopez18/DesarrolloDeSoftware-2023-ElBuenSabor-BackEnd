@@ -1,4 +1,6 @@
 package com.utn.ElBuenSabor.controllers;
+import com.utn.ElBuenSabor.entities.ArticuloInsumo;
+import com.utn.ElBuenSabor.services.ArticuloInsumoServiceImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
