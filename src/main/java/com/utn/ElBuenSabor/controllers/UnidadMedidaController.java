@@ -1,6 +1,5 @@
 package com.utn.ElBuenSabor.controllers;
 
-import com.utn.ElBuenSabor.services.UnidadMedidaServiceImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -8,14 +7,16 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "api/v1/unidadMedida")
-public class UnidadMedidaController extends BaseControllerImpl<UnidadMedida, UnidadMedidaServiceImpl> {
+@RequestMapping(path = "api/v1/unidadmedida")
+
+public class UnidadMedidaContoller extends BaseControllerImpl<UnidadMedida, UnidadMedidaServiceImpl>{
+
 
     @GetMapping("/search")
     public ResponseEntity<?> search(@RequestParam String filtro){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.search(filtro));
-        } catch (Exception e) {
+        } catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
         }
     }
@@ -23,10 +24,12 @@ public class UnidadMedidaController extends BaseControllerImpl<UnidadMedida, Uni
     @GetMapping("/searchPaged")
     public ResponseEntity<?> search(@RequestParam String filtro, Pageable pageable){
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(servicio.search(filtro, pageable));
-        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.search(filtro));
+        } catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+            }
         }
-    }
+
+
 
 }

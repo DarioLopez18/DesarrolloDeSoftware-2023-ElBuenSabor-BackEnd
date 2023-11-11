@@ -1,7 +1,6 @@
 package com.utn.ElBuenSabor.controllers;
 
 
-import com.utn.ElBuenSabor.services.UsuarioServiceImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -9,23 +8,25 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin(origins = "*")
-@RequestMapping(path = "api/v1/usuario")
-public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServiceImpl>{
+@RequestMapping(path = "api/v1/usuarios")
+public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServiceImpl> {
+
     @GetMapping("/search")
-    public ResponseEntity<?> search(@RequestParam String filtro){
+    public ResponseEntity<?> search(@RequestParam String username, String password) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(servicio.search(filtro));
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.search(username, password));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error, por favor intente más tarde.\"}");
         }
     }
 
-    @GetMapping("/searchPaged")
-    public ResponseEntity<?> search(@RequestParam String filtro, Pageable pageable){
+    @PutMapping("/cambiarContraseña")
+    public ResponseEntity<?> search(@RequestBody DTOCambiarContraseña dtoCambiarContraseña) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(servicio.search(filtro, pageable));
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.cambiarContrasena(dtoCambiarContraseña));
         } catch (Exception e) {
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. Por favor, intente más tarde.\"}");
         }
     }
+
 }
