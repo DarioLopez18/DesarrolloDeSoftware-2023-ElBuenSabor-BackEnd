@@ -8,6 +8,7 @@ import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.List;
 
 @Entity
 @Table(name = "articulo_manufacturado")
@@ -44,16 +45,8 @@ public class ArticuloManufacturado extends Base {
     private String urlImagen;
 
     @NotNull
-    @Column(name = "fecha_alta")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
-
-    @Column(name = "fecha_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;
-
-    @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
+    @OneToMany()
+    @JoinColumn(name = "id_articulo_manufacturado")
+    private List<DetalleArticuloManufacturado> detalleArticuloManufacturado;
 
 }
