@@ -6,7 +6,7 @@ import jakarta.persistence.Enumerated;
 import lombok.Data;
 
 @Data
-public class DTOCambiarEstado {
+public class DTOCambiarEstado extends DTOBase{
 
     private Long idPedido;
     @Enumerated(EnumType.STRING)

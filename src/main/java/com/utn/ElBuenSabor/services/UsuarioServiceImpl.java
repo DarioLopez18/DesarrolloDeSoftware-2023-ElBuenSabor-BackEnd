@@ -1,6 +1,6 @@
 package com.utn.ElBuenSabor.services;
 
-import com.utn.ElBuenSabor.dtos.DTOCambiarContraseña;
+import com.utn.ElBuenSabor.dtos.DTOCambiarContrasenia;
 import com.utn.ElBuenSabor.entities.Usuario;
 import com.utn.ElBuenSabor.repositories.BaseRepository;
 import com.utn.ElBuenSabor.repositories.UsuarioRepository;
@@ -32,11 +32,11 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario,Long> implements
     }
 
     @Override
-    public boolean cambiarContrasena(DTOCambiarContraseña dtoCambiarContraseña) throws Exception{
+    public boolean cambiarContrasena(DTOCambiarContrasenia dtoCambiarContrasenia) throws Exception{
         try{
-            Usuario usuario = usuarioRepository.getReferenceById(dtoCambiarContraseña.getId());
-            if (usuario.getPassword().equals(dtoCambiarContraseña.getContraseniaActual())) {
-                usuarioRepository.cambiarContrasena(dtoCambiarContraseña.getId(), dtoCambiarContraseña.getContraseniaNueva());
+            Usuario usuario = usuarioRepository.getReferenceById(dtoCambiarContrasenia.getId());
+            if (usuario.getPassword().equals(dtoCambiarContrasenia.getContraseniaActual())) {
+                usuarioRepository.cambiarContrasena(dtoCambiarContrasenia.getId(), dtoCambiarContrasenia.getContraseniaNueva());
 
                 return true;
             }else{

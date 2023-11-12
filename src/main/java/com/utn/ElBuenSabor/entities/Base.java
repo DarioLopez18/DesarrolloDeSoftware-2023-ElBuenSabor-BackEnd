@@ -3,9 +3,9 @@ package com.utn.ElBuenSabor.entities;
 import jakarta.persistence.*;
 import lombok.*;
 import jakarta.validation.constraints.NotNull;
-
 import java.io.Serializable;
 import java.util.Date;
+
 
 @MappedSuperclass
 @Getter
@@ -20,14 +20,12 @@ public class Base implements Serializable {
 
     @NotNull
     @Column(name = "fecha_alta")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaAlta;
+    private String fechaAlta;
 
     @Column(name = "fecha_modificacion")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaModificacion;
+    private String fechaModificacion;
 
     @Column(name = "fecha_baja")
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaBaja;
+    private String fechaBaja;
+
 }

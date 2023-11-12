@@ -44,10 +44,6 @@ public class ElBuenSaborApplication {
 		return args -> {
 			System.out.println("-----------------ESTOY FUNCIONANDO---------");
 
-			SimpleDateFormat formatoFecha = new SimpleDateFormat("yyyy-MM-dd");
-			String fechaString = "2023-09-09";
-			Date fecha = formatoFecha.parse(fechaString);
-
 			//Crea usuarios
 			Usuario usuario1 = Usuario.builder()
 					.auth0Id("auth0Id123")
@@ -56,7 +52,6 @@ public class ElBuenSaborApplication {
 					.rol(Rol.CLIENTE)
 					.build();
 			usuarioRepository.save(usuario1);
-			usuario1.setFechaAlta(fecha);
 
 			Usuario usuario2 = Usuario.builder()
 					.auth0Id("auth0Id1234")
@@ -66,7 +61,6 @@ public class ElBuenSaborApplication {
 					.build();
 
 			usuarioRepository.save(usuario2);
-			usuario2.setFechaAlta(fecha);
 
 			Usuario usuario3 = Usuario.builder()
 					.auth0Id("auth0Id12345")
@@ -75,7 +69,6 @@ public class ElBuenSaborApplication {
 					.rol(Rol.COCINERO)
 					.build();
 			usuarioRepository.save(usuario3);
-			usuario3.setFechaAlta(fecha);
 
 			Usuario usuario4 = Usuario.builder()
 					.auth0Id("auth0Id123456")
@@ -83,8 +76,6 @@ public class ElBuenSaborApplication {
 					.password("123")
 					.rol(Rol.DELIVERY)
 					.build();
-
-			usuario4.setFechaAlta(fecha);
 
 			//Crea y agrega domicilios al cliente asociado a este usuario
 			Persona cliente1 = Persona.builder()

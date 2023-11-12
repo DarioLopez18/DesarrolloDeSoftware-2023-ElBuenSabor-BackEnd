@@ -10,7 +10,7 @@ import java.math.BigDecimal;
 
 
 @Data
-public class DTORankingArticulosManufacturados {
+public class DTORankingArticulosManufacturados extends DTOBase{
 
     private ArticuloManufacturado articuloManufacturado;
     private Long cantidad;
