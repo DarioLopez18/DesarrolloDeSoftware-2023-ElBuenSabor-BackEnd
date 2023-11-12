@@ -341,15 +341,6 @@ public class ElBuenSaborApplication {
 			articuloManufacturado3.setSubmissionDateAlta(fechaActual);
 			articuloManufacturadoRepository.save(articuloManufacturado3);
 
-			DetallePedido detallePedido = DetallePedido.builder()
-					.cantidad(3)
-					.subtotal(BigDecimal.valueOf(3.0))
-					.subtotalCosto(BigDecimal.valueOf(15.0))
-					.articuloManufacturado(articuloManufacturado1)
-					.build();
-			detallePedido.setSubmissionDateAlta(fechaActual);
-			detallePedidoRepository.save(detallePedido);
-
 			CarritoProducto carritoProducto1 = CarritoProducto.builder()
 					.cantidadProductoCarrito(1)
 					.numeroLinea(1)
@@ -380,6 +371,46 @@ public class ElBuenSaborApplication {
 					.build();
 			carrito1.setSubmissionDateAlta(fechaActual);
 			carritoRepository.save(carrito1);
+
+			Domicilio domicilio1 = Domicilio.builder()
+					.calle("Calle 1")
+					.codigoPostal(1111)
+					.pisoDpto(1)
+					.numero(1234)
+					.numeroDpto(12)
+					.build();
+			domicilio1.setSubmissionDateAlta(fechaActual);
+			domicilioRepository.save(domicilio1);
+
+			Domicilio domicilio2 = Domicilio.builder()
+					.calle("Calle 2")
+					.codigoPostal(2222)
+					.pisoDpto(2)
+					.numero(1234)
+					.numeroDpto(12)
+					.build();
+			domicilio2.setSubmissionDateAlta(fechaActual);
+			domicilioRepository.save(domicilio2);
+
+
+			DetallePedido detallePedido1 = DetallePedido.builder()
+					.cantidad(3)
+					.subtotal(BigDecimal.valueOf(3.0))
+					.subtotalCosto(BigDecimal.valueOf(15.0))
+					.articuloManufacturado(articuloManufacturado1)
+					.build();
+			detallePedido1.setSubmissionDateAlta(fechaActual);
+			detallePedidoRepository.save(detallePedido1);
+
+			DetallePedido detallePedido2 = DetallePedido.builder()
+					.cantidad(2)
+					.subtotal(BigDecimal.valueOf(4.0))
+					.subtotalCosto(BigDecimal.valueOf(20.0))
+					.articuloManufacturado(articuloManufacturado2)
+					.build();
+			detallePedido2.setSubmissionDateAlta(fechaActual);
+			detallePedidoRepository.save(detallePedido2);
+			
 
 		};
 
