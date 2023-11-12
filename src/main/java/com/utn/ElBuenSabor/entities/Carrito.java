@@ -17,13 +17,6 @@ import java.util.List;
 @Builder
 public class Carrito extends Base{
 
-    private static final SimpleDateFormat dateFormat
-            = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-
-    @NotNull
-    @Column(name = "fecha_hora_creacion")
-    private String fechaHoraCreacionCarrito;
-
     @NotNull
     @Column(name="numeroCarrito")
     private Integer numeroCarrito;
@@ -33,8 +26,4 @@ public class Carrito extends Base{
     @JoinColumn(name = "id_carrito")
     private List<CarritoProducto> carritoProductos;
 
-    public void setFechaCreacionCarrito(Date date) {
-        //dateFormat.setTimeZone(TimeZone.getTimeZone(timezone));
-        fechaHoraCreacionCarrito = dateFormat.format(date);
-    }
 }

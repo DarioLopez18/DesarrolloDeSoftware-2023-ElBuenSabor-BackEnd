@@ -34,7 +34,7 @@ public class ElBuenSaborApplication {
 	@Autowired
 	public RubroArticuloManufacturadoRepository rubroArticuloRepository;
 	@Autowired
-	public RubroArticuloInsumoRepository recetaArticuloInsumoRepository;
+	public RubroArticuloInsumoRepository rubroArticuloInsumoRepository;
 	@Autowired
 	public RecetaRepository recetaRepository;
 
@@ -127,23 +127,11 @@ public class ElBuenSaborApplication {
 			cliente1.setSubmissionDateAlta(fechaActual);
 			personaRepository.save(cliente1);
 
-			ArticuloManufacturado articuloManufacturado1 = ArticuloManufacturado.builder()
-					.costo(BigDecimal.valueOf(10.20))
-					.denominacion("Pizza")
-					.descripcion("Pizza con cebolla")
-					.precioVenta(BigDecimal.valueOf(15.20))
-					.categoria(CategoriaProducto.PIZZA)
-					.urlImagen("URLPizza")
-
-					.build();
-			articuloManufacturado1.setSubmissionDateAlta(fechaActual);
-			articuloManufacturadoRepository.save(articuloManufacturado1);
-
 			UnidadMedida unidadMedidaKg = UnidadMedida.builder()
 					.abreviatura("kg")
 					.denominacion("Kilogramo")
 					.build();
-
+			unidadMedidaKg.setSubmissionDateAlta(fechaActual);
 			unidadMedidaRepository.save(unidadMedidaKg);
 
 			RubroArticuloManufacturado rubroArticuloHamburguesa = RubroArticuloManufacturado.builder()
@@ -153,38 +141,205 @@ public class ElBuenSaborApplication {
 			rubroArticuloHamburguesa.setSubmissionDateAlta(fechaActual);
 			rubroArticuloRepository.save((rubroArticuloHamburguesa));
 
-			ArticuloInsumo articuloInsumoHarina = ArticuloInsumo.builder()
+			RubroArticuloInsumo rubroArticuloInsumo1 = RubroArticuloInsumo.builder()
+					.denominacion("Panificados")
+					.build();
+			rubroArticuloInsumo1.setSubmissionDateAlta(fechaActual);
+			rubroArticuloInsumoRepository.save(rubroArticuloInsumo1);
+
+			RubroArticuloInsumo rubroArticuloInsumo2 = RubroArticuloInsumo.builder()
+					.denominacion("Verduras")
+					.build();
+			rubroArticuloInsumo2.setSubmissionDateAlta(fechaActual);
+			rubroArticuloInsumoRepository.save(rubroArticuloInsumo2);
+
+			RubroArticuloInsumo rubroArticuloInsumo3 = RubroArticuloInsumo.builder()
+					.denominacion("Carnes")
+					.build();
+			rubroArticuloInsumo3.setSubmissionDateAlta(fechaActual);
+			rubroArticuloInsumoRepository.save(rubroArticuloInsumo3);
+
+			RubroArticuloInsumo rubroArticuloInsumo4 = RubroArticuloInsumo.builder()
+					.denominacion("Lacteos")
+					.build();
+			rubroArticuloInsumo4.setSubmissionDateAlta(fechaActual);
+			rubroArticuloInsumoRepository.save(rubroArticuloInsumo4);
+
+			ArticuloInsumo articuloInsumo1= ArticuloInsumo.builder()
 					.denominacion("Harina")
 					.precioCompra(BigDecimal.valueOf(15.00))
 					.stockActual(BigDecimal.valueOf(20.00))
 					.stockMinimo(BigDecimal.valueOf(10.00))
 					.urlImagen(null)
 					.unidadMedida(unidadMedidaKg)
-					//rubroArticulo(rubroArticuloHamburguesa)
+					.rubroArticulo(rubroArticuloInsumo1)
 					.build();
-			articuloInsumoHarina.setSubmissionDateAlta(fechaActual);
-			articuloInsumoRepository.save(articuloInsumoHarina);
+			articuloInsumo1.setSubmissionDateAlta(fechaActual);
+			articuloInsumoRepository.save(articuloInsumo1);
 
-			RubroArticuloInsumo recetaArticuloInsumoMasaHamburguesa = RubroArticuloInsumo.builder()
-					.denominacion("Masa Hamburguesa")
+			ArticuloInsumo articuloInsumo2= ArticuloInsumo.builder()
+					.denominacion("Cebolla")
+					.precioCompra(BigDecimal.valueOf(600))
+					.stockActual(BigDecimal.valueOf(20))
+					.stockMinimo(BigDecimal.valueOf(5))
+					.urlImagen(null)
+					.unidadMedida(unidadMedidaKg)
+					.rubroArticulo(rubroArticuloInsumo2)
 					.build();
-			recetaArticuloInsumoMasaHamburguesa.setSubmissionDateAlta(fechaActual);
-			recetaArticuloInsumoRepository.save(recetaArticuloInsumoMasaHamburguesa);
+			articuloInsumo2.setSubmissionDateAlta(fechaActual);
+			articuloInsumoRepository.save(articuloInsumo2);
 
-			Receta recetaMasaHamburguesa = Receta.builder()
+			ArticuloInsumo articuloInsumo3= ArticuloInsumo.builder()
+					.denominacion("Bacon")
+					.precioCompra(BigDecimal.valueOf(5500))
+					.stockActual(BigDecimal.valueOf(1))
+					.stockMinimo(BigDecimal.valueOf(0.250))
+					.urlImagen(null)
+					.unidadMedida(unidadMedidaKg)
+					.rubroArticulo(rubroArticuloInsumo3)
+					.build();
+			articuloInsumo3.setSubmissionDateAlta(fechaActual);
+			articuloInsumoRepository.save(articuloInsumo3);
+
+			ArticuloInsumo articuloInsumo4 = ArticuloInsumo.builder()
+					.denominacion("Tomate")
+					.precioCompra(BigDecimal.valueOf(1500))
+					.stockActual(BigDecimal.valueOf(5))
+					.stockMinimo(BigDecimal.valueOf(1))
+					.urlImagen(null)
+					.unidadMedida(unidadMedidaKg)
+					.rubroArticulo(rubroArticuloInsumo2)
+					.build();
+			articuloInsumo4.setSubmissionDateAlta(fechaActual);
+			articuloInsumoRepository.save(articuloInsumo4);
+
+			ArticuloInsumo articuloInsumo5= ArticuloInsumo.builder()
+					.denominacion("Palta")
+					.precioCompra(BigDecimal.valueOf(2500))
+					.stockActual(BigDecimal.valueOf(3))
+					.stockMinimo(BigDecimal.valueOf(1))
+					.urlImagen(null)
+					.unidadMedida(unidadMedidaKg)
+					.rubroArticulo(rubroArticuloInsumo2)
+					.build();
+			articuloInsumo5.setSubmissionDateAlta(fechaActual);
+			articuloInsumoRepository.save(articuloInsumo5);
+
+			ArticuloInsumo articuloInsumo6= ArticuloInsumo.builder()
+					.denominacion("Levadura")
+					.precioCompra(BigDecimal.valueOf(1000))
+					.stockActual(BigDecimal.valueOf(0.3))
+					.stockMinimo(BigDecimal.valueOf(0.1))
+					.urlImagen(null)
+					.unidadMedida(unidadMedidaKg)
+					.rubroArticulo(rubroArticuloInsumo1)
+					.build();
+			articuloInsumo6.setSubmissionDateAlta(fechaActual);
+			articuloInsumoRepository.save(articuloInsumo6);
+
+			ArticuloInsumo articuloInsumo7= ArticuloInsumo.builder()
+					.denominacion("Medallon de carne")
+					.precioCompra(BigDecimal.valueOf(4500))
+					.stockActual(BigDecimal.valueOf(15))
+					.stockMinimo(BigDecimal.valueOf(5))
+					.urlImagen(null)
+					.unidadMedida(unidadMedidaKg)
+					.rubroArticulo(rubroArticuloInsumo3)
+					.build();
+			articuloInsumo7.setSubmissionDateAlta(fechaActual);
+			articuloInsumoRepository.save(articuloInsumo7);
+
+			ArticuloInsumo articuloInsumo8= ArticuloInsumo.builder()
+					.denominacion("Cheddar")
+					.precioCompra(BigDecimal.valueOf(3900))
+					.stockActual(BigDecimal.valueOf(3))
+					.stockMinimo(BigDecimal.valueOf(1))
+					.urlImagen(null)
+					.unidadMedida(unidadMedidaKg)
+					.rubroArticulo(rubroArticuloInsumo4)
+					.build();
+			articuloInsumo8.setSubmissionDateAlta(fechaActual);
+			articuloInsumoRepository.save(articuloInsumo8);
+
+			ArticuloInsumo articuloInsumo9 = ArticuloInsumo.builder()
+					.denominacion("Nachos")
+					.precioCompra(BigDecimal.valueOf(1500))
+					.stockActual(BigDecimal.valueOf(2))
+					.stockMinimo(BigDecimal.valueOf(0.3))
+					.urlImagen(null)
+					.unidadMedida(unidadMedidaKg)
+					.rubroArticulo(rubroArticuloInsumo4)
+					.build();
+			articuloInsumo9.setSubmissionDateAlta(fechaActual);
+			articuloInsumoRepository.save(articuloInsumo9);
+
+			Receta receta1 = Receta.builder()
 					.nombreReceta("MasapPizza")
-					.descripcionReceta("Mezclar todos los ingredientes")
+					.descripcionReceta("Mezclar 50gr de levadura con 50ml de agua, cuando se disuelva agregarlo al kg de harina. Luego agregar 600ml de agua y una pizca de sal. Amasar durante 5 minutos, dejar leudar hasta duplicar tamaño, luego estirar al tamaño del molde")
+					.tiempoPreparacion(30)
+					.build();
+			receta1.setSubmissionDateAlta(fechaActual);
+			recetaRepository.save(receta1);
+
+			Receta receta2 = Receta.builder()
+					.nombreReceta("Guacamole")
+					.descripcionReceta("Cortar 1 tomate en dados, pisar 2 paltas, agregar tomate a la palta y condimentar con sal y pimienta a gusto, picar cilantro a gusto y agregar a mezcla final")
 					.tiempoPreparacion(10)
 					.build();
-			recetaMasaHamburguesa.setSubmissionDateAlta(fechaActual);
-			recetaRepository.save(recetaMasaHamburguesa);
+			receta2.setSubmissionDateAlta(fechaActual);
+			recetaRepository.save(receta2);
 
-			DetalleArticuloManufacturado detalleArticuloManufacturado = DetalleArticuloManufacturado.builder()
-					.cantidad(BigDecimal.valueOf(3.0))
-					.articuloInsumo(articuloInsumoHarina)
+			Receta receta3 = Receta.builder()
+					.nombreReceta("MasapHamburguesa")
+					.descripcionReceta("Mezclar 50gr de levadura con 50ml de agua, cuando se disuelva agregarlo al kg de harina. Luego agregar 300ml de agua, 300ml de leche y una pizca de sal. Amasar durante 5 minutos, dejar leudar hasta duplicar tamaño, luego estirar al tamaño del molde")
+					.tiempoPreparacion(30)
 					.build();
-			detalleArticuloManufacturado.setSubmissionDateAlta(fechaActual);
-			detalleArticuloManufacturadoRepository.save(detalleArticuloManufacturado);
+			receta3.setSubmissionDateAlta(fechaActual);
+			recetaRepository.save(receta3);
+
+			DetalleArticuloManufacturado detalleArticuloManufacturado1 = DetalleArticuloManufacturado.builder()
+					.cantidad(BigDecimal.valueOf(1))
+					.articuloInsumo(articuloInsumo1)
+					.build();
+			detalleArticuloManufacturado1.setSubmissionDateAlta(fechaActual);
+			detalleArticuloManufacturadoRepository.save(detalleArticuloManufacturado1);
+
+			ArticuloManufacturado articuloManufacturado1 = ArticuloManufacturado.builder()
+					.costo(BigDecimal.valueOf(1850))
+					.denominacion("Pizza")
+					.descripcion("Pizza con cebolla")
+					.precioVenta(BigDecimal.valueOf(6550))
+					.categoria(CategoriaProducto.PIZZA)
+					.tiempoEstimadoCocina(15)
+					.urlImagen("URLPizza")
+					.detalleArticuloManufacturado(List.of(detalleArticuloManufacturado1))
+					.build();
+			articuloManufacturado1.setSubmissionDateAlta(fechaActual);
+			articuloManufacturadoRepository.save(articuloManufacturado1);
+
+			ArticuloManufacturado articuloManufacturado2 = ArticuloManufacturado.builder()
+					.costo(BigDecimal.valueOf(1500))
+					.denominacion("Hamburguesa Americana")
+					.descripcion("Hamburugesa con bacon y cheddar")
+					.precioVenta(BigDecimal.valueOf(3200))
+					.categoria(CategoriaProducto.HAMBUERGUESA)
+					.tiempoEstimadoCocina(20)
+					.urlImagen("")
+					.build();
+			articuloManufacturado2.setSubmissionDateAlta(fechaActual);
+			articuloManufacturadoRepository.save(articuloManufacturado2);
+
+			ArticuloManufacturado articuloManufacturado3 = ArticuloManufacturado.builder()
+					.costo(BigDecimal.valueOf(1650))
+					.denominacion("Hamburguesa TexMex")
+					.descripcion("Hamburugesa doble con guacamole y nachos")
+					.precioVenta(BigDecimal.valueOf(3350))
+					.categoria(CategoriaProducto.HAMBUERGUESA)
+					.tiempoEstimadoCocina(15)
+					.urlImagen("")
+					.build();
+			articuloManufacturado3.setSubmissionDateAlta(fechaActual);
+			articuloManufacturadoRepository.save(articuloManufacturado3);
 
 			DetallePedido detallePedido = DetallePedido.builder()
 					.cantidad(3)
@@ -195,20 +350,37 @@ public class ElBuenSaborApplication {
 			detallePedido.setSubmissionDateAlta(fechaActual);
 			detallePedidoRepository.save(detallePedido);
 
+			CarritoProducto carritoProducto1 = CarritoProducto.builder()
+					.cantidadProductoCarrito(1)
+					.numeroLinea(1)
+					.articuloManufacturado(articuloManufacturado1)
+					.build();
+			carritoProducto1.setSubmissionDateAlta(fechaActual);
+			carritoProductoRepository.save(carritoProducto1);
+
+			CarritoProducto carritoProducto2 = CarritoProducto.builder()
+					.cantidadProductoCarrito(1)
+					.numeroLinea(2)
+					.articuloManufacturado(articuloManufacturado2)
+					.build();
+			carritoProducto2.setSubmissionDateAlta(fechaActual);
+			carritoProductoRepository.save(carritoProducto2);
+
+			CarritoProducto carritoProducto3 = CarritoProducto.builder()
+					.cantidadProductoCarrito(1)
+					.numeroLinea(3)
+					.articuloManufacturado(articuloManufacturado3)
+					.build();
+			carritoProducto3.setSubmissionDateAlta(fechaActual);
+			carritoProductoRepository.save(carritoProducto3);
 
 			Carrito carrito1 = Carrito.builder()
 					.numeroCarrito(1)
-					.carritoProductos(List.of(
-							CarritoProducto.builder()
-								.cantidadProductoCarrito(1)
-								.numeroLinea(12)
-								.articuloManufacturado(articuloManufacturado1)
-								.build()
-					)).build();
-					carrito1.setFechaCreacionCarrito(fechaActual);
+					.carritoProductos(List.of(carritoProducto1, carritoProducto2, carritoProducto3))
+					.build();
+			carrito1.setSubmissionDateAlta(fechaActual);
 			carritoRepository.save(carrito1);
 
-			
 		};
 
 
