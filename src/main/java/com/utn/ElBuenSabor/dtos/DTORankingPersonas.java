@@ -5,7 +5,6 @@ import lombok.Data;
 
 import java.math.BigDecimal;
 
-@Data
 public class DTORankingPersonas extends DTOBase{
     private Persona persona;
     private Long cantidadPedidos;

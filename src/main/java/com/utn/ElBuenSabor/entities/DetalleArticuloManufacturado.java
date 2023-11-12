@@ -5,6 +5,7 @@ import jakarta.persistence.*;
 import lombok.*;
 import jakarta.validation.constraints.NotNull;
 
+import java.math.BigDecimal;
 
 
 @Entity
@@ -18,7 +19,7 @@ public class DetalleArticuloManufacturado extends Base {
 
     @NotNull
     @Column(name = "cantidad", precision = 10, scale = 2)
-    private Double cantidad;
+    private BigDecimal cantidad;
 
     @NotNull
     @ManyToOne()

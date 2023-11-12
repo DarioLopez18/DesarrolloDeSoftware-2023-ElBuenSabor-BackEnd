@@ -1,6 +1,7 @@
 package com.utn.ElBuenSabor.dtos;
 
 
+import lombok.Data;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -9,6 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.TimeZone;
 
+@Data
 public class DTOBase{
 
     private String fechaAlta;
