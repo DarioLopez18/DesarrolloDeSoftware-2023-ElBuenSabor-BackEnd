@@ -14,6 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
+import java.util.concurrent.Callable;
 
 @SpringBootApplication
 public class ElBuenSaborApplication {
@@ -45,6 +46,9 @@ public class ElBuenSaborApplication {
 
 	@Autowired
 	public CarritoProductoRepository carritoProductoRepository;
+
+	@Autowired
+	public CarritoRepository carritoRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(ElBuenSaborApplication.class, args);
 	}
@@ -64,7 +68,7 @@ public class ElBuenSaborApplication {
 					.password("123")
 					.rol(Rol.CLIENTE)
 					.build();
-			usuario1.setSubmissionDateAlta(fechaActual, "timeZone");
+			usuario1.setSubmissionDateAlta(fechaActual);
 			usuarioRepository.save(usuario1);
 
 			Usuario usuario2 = Usuario.builder()
@@ -73,7 +77,7 @@ public class ElBuenSaborApplication {
 					.password("123")
 					.rol(Rol.ADMINISTRADOR)
 					.build();
-			usuario2.setSubmissionDateAlta(fechaActual, "timeZone");
+			usuario2.setSubmissionDateAlta(fechaActual);
 			usuarioRepository.save(usuario2);
 
 			Usuario usuario3 = Usuario.builder()
@@ -82,7 +86,7 @@ public class ElBuenSaborApplication {
 					.password("123")
 					.rol(Rol.COCINERO)
 					.build();
-			usuario3.setSubmissionDateAlta(fechaActual, "timeZone");
+			usuario3.setSubmissionDateAlta(fechaActual);
 			usuarioRepository.save(usuario3);
 
 			Usuario usuario4 = Usuario.builder()
@@ -91,9 +95,7 @@ public class ElBuenSaborApplication {
 					.password("123")
 					.rol(Rol.DELIVERY)
 					.build();
-			usuario4.setSubmissionDateAlta(fechaActual,"timeZone");
-
-			System.out.println(usuario4.getSubmissionDateConvertedAlta("timeZone"));
+			usuario4.setSubmissionDateAlta(fechaActual);
 
 			//Crea y agrega domicilios al cliente asociado a este usuario
 			Persona cliente1 = Persona.builder()
@@ -122,7 +124,7 @@ public class ElBuenSaborApplication {
 
 					.usuario(usuario4)
 					.build();
-			cliente1.setSubmissionDateAlta(fechaActual, "timeZone");
+			cliente1.setSubmissionDateAlta(fechaActual);
 			personaRepository.save(cliente1);
 
 			ArticuloManufacturado articuloManufacturado1 = ArticuloManufacturado.builder()
@@ -134,7 +136,7 @@ public class ElBuenSaborApplication {
 					.urlImagen("URLPizza")
 
 					.build();
-			articuloManufacturado1.setSubmissionDateAlta(fechaActual, "timeZone");
+			articuloManufacturado1.setSubmissionDateAlta(fechaActual);
 			articuloManufacturadoRepository.save(articuloManufacturado1);
 
 			UnidadMedida unidadMedidaKg = UnidadMedida.builder()
@@ -148,7 +150,7 @@ public class ElBuenSaborApplication {
 					.denominacion("Hamburguesa")
 					.rubroPadre(null)
 					.build();
-			rubroArticuloHamburguesa.setSubmissionDateAlta(fechaActual, "timeZone");
+			rubroArticuloHamburguesa.setSubmissionDateAlta(fechaActual);
 			rubroArticuloRepository.save((rubroArticuloHamburguesa));
 
 			ArticuloInsumo articuloInsumoHarina = ArticuloInsumo.builder()
@@ -160,13 +162,13 @@ public class ElBuenSaborApplication {
 					.unidadMedida(unidadMedidaKg)
 					//rubroArticulo(rubroArticuloHamburguesa)
 					.build();
-			articuloInsumoHarina.setSubmissionDateAlta(fechaActual, "timeZone");
+			articuloInsumoHarina.setSubmissionDateAlta(fechaActual);
 			articuloInsumoRepository.save(articuloInsumoHarina);
 
 			RubroArticuloInsumo recetaArticuloInsumoMasaHamburguesa = RubroArticuloInsumo.builder()
 					.denominacion("Masa Hamburguesa")
 					.build();
-			recetaArticuloInsumoMasaHamburguesa.setSubmissionDateAlta(fechaActual, "timeZone");
+			recetaArticuloInsumoMasaHamburguesa.setSubmissionDateAlta(fechaActual);
 			recetaArticuloInsumoRepository.save(recetaArticuloInsumoMasaHamburguesa);
 
 			Receta recetaMasaHamburguesa = Receta.builder()
@@ -174,14 +176,14 @@ public class ElBuenSaborApplication {
 					.descripcionReceta("Mezclar todos los ingredientes")
 					.tiempoPreparacion(10)
 					.build();
-			recetaMasaHamburguesa.setSubmissionDateAlta(fechaActual, "timeZone");
+			recetaMasaHamburguesa.setSubmissionDateAlta(fechaActual);
 			recetaRepository.save(recetaMasaHamburguesa);
 
 			DetalleArticuloManufacturado detalleArticuloManufacturado = DetalleArticuloManufacturado.builder()
 					.cantidad(BigDecimal.valueOf(3.0))
 					.articuloInsumo(articuloInsumoHarina)
 					.build();
-			detalleArticuloManufacturado.setSubmissionDateAlta(fechaActual, "timeZone");
+			detalleArticuloManufacturado.setSubmissionDateAlta(fechaActual);
 			detalleArticuloManufacturadoRepository.save(detalleArticuloManufacturado);
 
 			DetallePedido detallePedido = DetallePedido.builder()
@@ -190,18 +192,24 @@ public class ElBuenSaborApplication {
 					.subtotalCosto(BigDecimal.valueOf(15.0))
 					.articuloManufacturado(articuloManufacturado1)
 					.build();
-			detallePedido.setSubmissionDateAlta(fechaActual, "timeZone");
+			detallePedido.setSubmissionDateAlta(fechaActual);
 			detallePedidoRepository.save(detallePedido);
 
-			CarritoProducto carritoProducto1 = CarritoProducto.builder()
-					.cantidadProductoCarrito(1)
-					.numeroLinea(12)
-					.articuloManufacturado(articuloManufacturado1)
-					.build();
-			carritoProducto1.setSubmissionDateAlta(fechaActual, "timeZone");
-			carritoProductoRepository.save(carritoProducto1);
-		};
 
+			Carrito carrito1 = Carrito.builder()
+					.numeroCarrito(1)
+					.carritoProductos(List.of(
+							CarritoProducto.builder()
+								.cantidadProductoCarrito(1)
+								.numeroLinea(12)
+								.articuloManufacturado(articuloManufacturado1)
+								.build()
+					)).build();
+					carrito1.setFechaCreacionCarrito(fechaActual);
+			carritoRepository.save(carrito1);
+
+			
+		};
 
 
 	}

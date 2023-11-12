@@ -38,8 +38,8 @@ public class Base implements Serializable {
         return dateFormat.parse(this.fechaAlta);
     }
 
-    public void setSubmissionDateAlta(Date date, String timezone) {
-        dateFormat.setTimeZone(TimeZone.getTimeZone(timezone));
+    public void setSubmissionDateAlta(Date date) {
+        //dateFormat.setTimeZone(TimeZone.getTimeZone(timezone));
         fechaAlta = dateFormat.format(date);
     }
 
@@ -48,8 +48,8 @@ public class Base implements Serializable {
         return dateFormat.parse(this.fechaBaja);
     }
 
-    public void setSubmissionDateBaja(Date date, String timezone) {
-        dateFormat.setTimeZone(TimeZone.getTimeZone(timezone));
+    public void setSubmissionDateBaja(Date date) {
+        //dateFormat.setTimeZone(TimeZone.getTimeZone(timezone));
         fechaBaja = dateFormat.format(date);
     }
 
@@ -58,8 +58,8 @@ public class Base implements Serializable {
         return dateFormat.parse(this.fechaModificacion);
     }
 
-    public void setSubmissionDateMod(Date date, String timezone) {
-        dateFormat.setTimeZone(TimeZone.getTimeZone(timezone));
+    public void setSubmissionDateMod(Date date) {
+        //dateFormat.setTimeZone(TimeZone.getTimeZone(timezone));
         fechaModificacion = dateFormat.format(date);
     }
 
