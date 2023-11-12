@@ -1,11 +1,8 @@
 package com.utn.ElBuenSabor.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 
 @Entity
@@ -22,7 +19,7 @@ public class RubroArticuloManufacturado extends Base{
     private RubroArticuloManufacturado rubroPadre;
 
     //@OneToMany(mappedBy = "rubroPadre", cascade = CascadeType.ALL)
-    //private List<RubroArticulo> subRubros = new ArrayList<>();
+    //private List<RubroArticuloManufacturado> subRubros = new ArrayList<>();
 
     @NotNull
     private String denominacion;

@@ -1,17 +1,20 @@
 package com.utn.ElBuenSabor.entities;
 
+import com.utn.ElBuenSabor.enums.Rol;
 import jakarta.persistence.*;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
+
 
 @Entity
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 @Table(name = "usuario")
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
+
 public class Usuario extends Base {
 
     @NotNull
@@ -25,6 +28,10 @@ public class Usuario extends Base {
     @NotNull
     @Column (name = "password", nullable = false)
     private String password;
+
+    @NotNull
+    @Column (name = "rol", nullable = false)
+    private Rol rol;
 
 
 }

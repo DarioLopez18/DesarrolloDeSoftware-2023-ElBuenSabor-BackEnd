@@ -2,6 +2,7 @@ package com.utn.ElBuenSabor.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import jakarta.validation.constraints.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -18,14 +19,19 @@ import lombok.Builder;
 
 public class Persona extends Base {
 
+    @NotNull
     private String nombre;
 
+    @NotNull
     private String apellido;
 
+    @NotNull
     private String telefono;
 
+    @NotNull
     private String email;
 
+    @NotNull
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn(name = "id_usuario")
     private Usuario usuario;

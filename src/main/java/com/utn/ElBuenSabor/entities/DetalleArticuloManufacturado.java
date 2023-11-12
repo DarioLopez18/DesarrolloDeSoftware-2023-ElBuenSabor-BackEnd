@@ -3,7 +3,7 @@ package com.utn.ElBuenSabor.entities;
 import jakarta.persistence.*;
 
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 import java.math.BigDecimal;
 

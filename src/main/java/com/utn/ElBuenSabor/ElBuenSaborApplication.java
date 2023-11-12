@@ -20,7 +20,7 @@ public class ElBuenSaborApplication {
 	@Autowired
 	public DomicilioRepository domicilioRepository;
 	@Autowired
-	public ClienteRepository clienteRepository;
+	public PersonaRepository personaRepository;
 	@Autowired
 	public UsuarioRepository usuarioRepository;
 	@Autowired
@@ -40,7 +40,7 @@ public class ElBuenSaborApplication {
 	}
 
 	@Bean
-	CommandLineRunner init(UsuarioRepository usuarioRepo, ClienteRepository clienteRepo, DomicilioRepository domicilioRepo ) {
+	CommandLineRunner init(UsuarioRepository usuarioRepo, PersonaRepository clienteRepo, DomicilioRepository domicilioRepo ) {
 		return args -> {
 			System.out.println("-----------------ESTOY FUNCIONANDO---------");
 
@@ -48,44 +48,46 @@ public class ElBuenSaborApplication {
 			String fechaString = "2023-09-09";
 			Date fecha = formatoFecha.parse(fechaString);
 
-			//Crea User
-			Usuario user1 = Usuario.builder()
+			//Crea usuarios
+			Usuario usuario1 = Usuario.builder()
 					.auth0Id("auth0Id123")
 					.username("username123")
+					.password("123")
 					.rol(Rol.CLIENTE)
 					.build();
-			//guardar user
-			usuarioRepository.save(user1);
+			usuarioRepository.save(usuario1);
+			usuario1.setFechaAlta(fecha);
 
-			//Crea User
-			Usuario user2 = Usuario.builder()
+			Usuario usuario2 = Usuario.builder()
 					.auth0Id("auth0Id1234")
 					.username("username1234")
+					.password("123")
 					.rol(Rol.ADMINISTRADOR)
 					.build();
-			//guardar user
-			usuarioRepository.save(user2);
 
-			//Crea User
-			Usuario user3 = Usuario.builder()
+			usuarioRepository.save(usuario2);
+			usuario2.setFechaAlta(fecha);
+
+			Usuario usuario3 = Usuario.builder()
 					.auth0Id("auth0Id12345")
 					.username("username12345")
+					.password("123")
 					.rol(Rol.COCINERO)
 					.build();
-			//guardar user
-			usuarioRepository.save(user3);
+			usuarioRepository.save(usuario3);
+			usuario3.setFechaAlta(fecha);
 
-			//Crea User
-			Usuario user4 = Usuario.builder()
+			Usuario usuario4 = Usuario.builder()
 					.auth0Id("auth0Id123456")
 					.username("username123456")
+					.password("123")
 					.rol(Rol.DELIVERY)
 					.build();
-			//guardar user
-			usuarioRepository.save(user4);
+
+			usuario4.setFechaAlta(fecha);
 
 			//Crea y agrega domicilios al cliente asociado a este usuario
-			Cliente cliente1 = Cliente.builder()
+			Persona cliente1 = Persona.builder()
 					.apellido("Apellido")
 					.email("cliente@example.com")
 					.nombre("Nombre")
@@ -108,19 +110,15 @@ public class ElBuenSaborApplication {
 									.pisoDpto(4)
 									.build()
 					))
-					.fechaAlta(new Date())
-					.usuario(user1) // Asociar el cliente con el usuario
+
+					.usuario(usuario4)
 					.build();
-			//guardar cliente
-			clienteRepository.save(cliente1);
+			personaRepository.save(cliente1);
 
 			ArticuloManufacturado articuloManufacturado1 = ArticuloManufacturado.builder()
 					.costo(BigDecimal.valueOf(10.20))
 					.denominacion("Pizza")
 					.descripcion("Pizza con cebolla")
-					.fechaAlta(new Date())
-					.fechaBaja(null)
-					.fechaModificacion(null)
 					.precioVenta(BigDecimal.valueOf(15.20))
 					.categoria(CategoriaProducto.PIZZA)
 					.urlImagen("URLPizza")
@@ -132,50 +130,38 @@ public class ElBuenSaborApplication {
 			UnidadMedida unidadMedidaKg = UnidadMedida.builder()
 					.abreviatura("kg")
 					.denominacion("Kilogramo")
-					.fechaAlta(new Date())
-					.fechaBaja(null)
-					.fechaModificacion(null)
-
 					.build();
 
 			unidadMedidaRepository.save(unidadMedidaKg);
 
-			RubroArticuloManufacturado rubroArticuloHarina = RubroArticuloManufacturado.builder()
-					.denominacion("Harina")
-					.fechaAlta(new Date())
-					.fechaBaja(null)
-					.fechaModificacion(null)
+			RubroArticuloManufacturado rubroArticuloHamburguesa = RubroArticuloManufacturado.builder()
+					.denominacion("Hamburguesa")
 					.rubroPadre(null)
-					.subRubros(null)
 					.build();
-			rubroArticuloRepository.save((rubroArticuloHarina));
+			rubroArticuloRepository.save((rubroArticuloHamburguesa));
 
 			ArticuloInsumo articuloInsumoHarina = ArticuloInsumo.builder()
 					.denominacion("Harina")
-					.fechaAlta(new Date())
-					.fechaBaja(null)
-					.fechaModificacion(null)
 					.precioCompra(BigDecimal.valueOf(15.00))
 					.stockActual(BigDecimal.valueOf(20.00))
 					.stockMinimo(BigDecimal.valueOf(10.00))
 					.urlImagen(null)
 					.unidadMedida(unidadMedidaKg)
-					.rubroArticulo(rubroArticuloHarina)
+					//rubroArticulo(rubroArticuloHamburguesa)
 					.build();
 			articuloInsumoRepository.save(articuloInsumoHarina);
-			RubroArticuloInsumo recetaArticuloInsumoMasaPizza = RubroArticuloInsumo.builder()
-					.cantidad(1)
-					.articuloInsumo(articuloInsumoHarina)
-					.build();
-			recetaArticuloInsumoRepository.save(recetaArticuloInsumoMasaPizza);
 
-			Receta recetaMasaPizza = Receta.builder()
+			RubroArticuloInsumo recetaArticuloInsumoMasaHamburguesa = RubroArticuloInsumo.builder()
+					.denominacion("Masa Hamburguesa")
+					.build();
+			recetaArticuloInsumoRepository.save(recetaArticuloInsumoMasaHamburguesa);
+
+			Receta recetaMasaHamburguesa = Receta.builder()
 					.nombreReceta("MasapPizza")
-					.procedimientoReceta("Mezclar todos los ingredientes")
-					.recetaArticuloInsumos(null)
+					.descripcionReceta("Mezclar todos los ingredientes")
 					.tiempoPreparacion(10)
 					.build();
-			recetaRepository.save(recetaMasaPizza);
+			recetaRepository.save(recetaMasaHamburguesa);
 		};
 
 

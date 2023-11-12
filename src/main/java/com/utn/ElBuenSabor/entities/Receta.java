@@ -2,7 +2,7 @@ package com.utn.ElBuenSabor.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "receta")
@@ -16,5 +16,13 @@ public class Receta extends Base {
 
     @NotNull
     @Column(name = "receta")
-    private String descripcion;
+    private String descripcionReceta;
+
+    @NotNull
+    @Column(name = "nombre_receta")
+    private String nombreReceta;
+
+    @NotNull
+    @Column(name = "tiempo_receta")
+    private double tiempoPreparacion;
 }

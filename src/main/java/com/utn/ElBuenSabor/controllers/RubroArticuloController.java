@@ -2,6 +2,7 @@ package com.utn.ElBuenSabor.controllers;
 
 import com.utn.ElBuenSabor.entities.RubroArticuloManufacturado;
 import com.utn.ElBuenSabor.services.RubroArticuloInsumoServiceImpl;
+import com.utn.ElBuenSabor.services.RubroArticuloManufacturadoServiceImpl;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -10,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @CrossOrigin(origins = "*")
 @RequestMapping(path = "api/v1/rubroArticulo")
-public class RubroArticuloController extends BaseControllerImpl<RubroArticuloManufacturado, RubroArticuloServiceImpl>{
+public class RubroArticuloController extends BaseControllerImpl<RubroArticuloManufacturado, RubroArticuloManufacturadoServiceImpl>{
     @GetMapping("/search")
     public ResponseEntity<?> search(@RequestParam String filtro){
         try {

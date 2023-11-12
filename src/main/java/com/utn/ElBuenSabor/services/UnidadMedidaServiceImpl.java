@@ -1,4 +1,4 @@
-package com.utn.ElBuenSabor.services;3
+package com.utn.ElBuenSabor.services;
 
 import com.utn.ElBuenSabor.entities.UnidadMedida;
 import com.utn.ElBuenSabor.repositories.BaseRepository;

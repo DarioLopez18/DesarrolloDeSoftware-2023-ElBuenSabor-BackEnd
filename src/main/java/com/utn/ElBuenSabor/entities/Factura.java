@@ -2,9 +2,8 @@ package com.utn.ElBuenSabor.entities;
 
 import com.utn.ElBuenSabor.enums.FormaPago;
 import jakarta.persistence.*;
-
+import jakarta.validation.constraints.NotNull;
 import lombok.*;
-import org.antlr.v4.runtime.misc.NotNull;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
