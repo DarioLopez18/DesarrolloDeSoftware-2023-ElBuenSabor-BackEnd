@@ -35,6 +35,15 @@ public class ElBuenSaborApplication {
 	public RubroArticuloInsumoRepository recetaArticuloInsumoRepository;
 	@Autowired
 	public RecetaRepository recetaRepository;
+
+	@Autowired
+	public DetalleArticuloManufacturadoRepository detalleArticuloManufacturadoRepository;
+
+	@Autowired
+	public DetallePedidoRepository detallePedidoRepository;
+
+	@Autowired
+	public CarritoProductoRepository carritoProductoRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(ElBuenSaborApplication.class, args);
 	}
@@ -153,6 +162,27 @@ public class ElBuenSaborApplication {
 					.tiempoPreparacion(10)
 					.build();
 			recetaRepository.save(recetaMasaHamburguesa);
+
+			DetalleArticuloManufacturado detalleArticuloManufacturado = DetalleArticuloManufacturado.builder()
+					.cantidad(3.0)
+					.articuloInsumo(articuloInsumoHarina)
+					.build();
+			detalleArticuloManufacturadoRepository.save(detalleArticuloManufacturado);
+
+			DetallePedido detallePedido = DetallePedido.builder()
+					.cantidad(3)
+					.subtotal(3.0)
+					.subtotalCosto(15.0)
+					.articuloManufacturado(articuloManufacturado1)
+					.build();
+			detallePedidoRepository.save(detallePedido);
+
+			CarritoProducto carritoProducto1 = CarritoProducto.builder()
+					.cantidadProductoCarrito(1)
+					.numeroLinea(12)
+					.articuloManufacturado(articuloManufacturado1)
+					.build();
+			carritoProductoRepository.save(carritoProducto1);
 		};
 
 
