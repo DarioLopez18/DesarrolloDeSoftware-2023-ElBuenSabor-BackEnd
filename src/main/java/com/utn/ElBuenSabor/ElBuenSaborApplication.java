@@ -97,31 +97,31 @@ public class ElBuenSaborApplication {
 					.build();
 			usuario4.setSubmissionDateAlta(fechaActual);
 
+			Domicilio domicilio1 = Domicilio.builder()
+					.calle("Calle 1")
+					.codigoPostal(1111)
+					.pisoDpto(1)
+					.numero(1234)
+					.numeroDpto(12)
+					.build();
+			domicilio1.setSubmissionDateAlta(fechaActual);
+
+			Domicilio domicilio2 = Domicilio.builder()
+					.calle("Calle 2")
+					.codigoPostal(2222)
+					.pisoDpto(2)
+					.numero(1234)
+					.numeroDpto(12)
+					.build();
+			domicilio2.setSubmissionDateAlta(fechaActual);
+
 			//Crea y agrega domicilios al cliente asociado a este usuario
 			Persona cliente1 = Persona.builder()
 					.apellido("Apellido")
 					.email("cliente@example.com")
 					.nombre("Nombre")
 					.telefono("123-456-7890")
-					.domicilios(List.of(
-							Domicilio.builder()
-									.calle("Calle 1")
-									.codigoPostal(12345)
-									.localidad("Ciudad 1")
-									.numero(123)
-									.numeroDpto(1)
-									.pisoDpto(2)
-									.build(),
-							Domicilio.builder()
-									.calle("Calle 2")
-									.codigoPostal(54321)
-									.localidad("Ciudad 2")
-									.numero(456)
-									.numeroDpto(3)
-									.pisoDpto(4)
-									.build()
-					))
-
+					.domicilios(List.of(domicilio1,domicilio2))
 					.usuario(usuario4)
 					.build();
 			cliente1.setSubmissionDateAlta(fechaActual);
@@ -371,27 +371,6 @@ public class ElBuenSaborApplication {
 					.build();
 			carrito1.setSubmissionDateAlta(fechaActual);
 			carritoRepository.save(carrito1);
-
-			Domicilio domicilio1 = Domicilio.builder()
-					.calle("Calle 1")
-					.codigoPostal(1111)
-					.pisoDpto(1)
-					.numero(1234)
-					.numeroDpto(12)
-					.build();
-			domicilio1.setSubmissionDateAlta(fechaActual);
-			domicilioRepository.save(domicilio1);
-
-			Domicilio domicilio2 = Domicilio.builder()
-					.calle("Calle 2")
-					.codigoPostal(2222)
-					.pisoDpto(2)
-					.numero(1234)
-					.numeroDpto(12)
-					.build();
-			domicilio2.setSubmissionDateAlta(fechaActual);
-			domicilioRepository.save(domicilio2);
-
 
 			DetallePedido detallePedido1 = DetallePedido.builder()
 					.cantidad(3)
