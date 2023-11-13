@@ -392,10 +392,10 @@ public class ElBuenSaborApplication {
 
 			Factura factura1 = Factura.builder()
 					.fechaFacturacion(fechaActual)
-					.mpPaymentId(Long.valueOf("001"))
-					.mpMerchantOrderId(Long.valueOf(""))
-					.mpPreferenceId(String.valueOf(""))
-					.mpPaymentType(String.valueOf("Tarjeta"))
+					.mpPaymentId(001L)
+					.mpMerchantOrderId(135456L)
+					.mpPreferenceId("")
+					.mpPaymentType("Tarjeta")
 					.formaPago(FormaPago.MERCADO_PAGO)
 					.totalVenta(BigDecimal.valueOf(12000))
 					.build();
