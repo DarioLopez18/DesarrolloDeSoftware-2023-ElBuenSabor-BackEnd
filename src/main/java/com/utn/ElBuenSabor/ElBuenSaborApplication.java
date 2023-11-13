@@ -69,7 +69,7 @@ public class ElBuenSaborApplication {
 					.rol(Rol.CLIENTE)
 					.build();
 			usuario1.setSubmissionDateAlta(fechaActual);
-			usuarioRepository.save(usuario1);
+
 
 			Usuario usuario2 = Usuario.builder()
 					.auth0Id("auth0Id1234")
@@ -126,6 +126,33 @@ public class ElBuenSaborApplication {
 					.build();
 			cliente1.setSubmissionDateAlta(fechaActual);
 			personaRepository.save(cliente1);
+ 			//----------------cliente 2------------------------------
+
+			// Crear otro cliente asociado a usuario1
+			Domicilio domicilio3 = Domicilio.builder()
+					.calle("Calle 3")
+					.codigoPostal(3333)
+					.pisoDpto(3)
+					.numero(5678)
+					.numeroDpto(34)
+					.build();
+			domicilio3.setSubmissionDateAlta(fechaActual);
+
+			// Crear un nuevo cliente asociado a usuario1
+			Persona cliente2 = Persona.builder()
+					.apellido("ApellidoCliente2")
+					.email("cliente2@example.com")
+					.nombre("NombreCliente2")
+					.telefono("987-654-3210")
+					.domicilios(List.of(domicilio3))
+					.usuario(usuario1)  // asociar con usuario1
+					.build();
+			cliente2.setSubmissionDateAlta(fechaActual);
+
+			// Guardar el nuevo cliente en el repositorio
+			personaRepository.save(cliente2);
+			
+            //-------------------------------------------------
 
 			UnidadMedida unidadMedidaKg = UnidadMedida.builder()
 					.abreviatura("kg")
