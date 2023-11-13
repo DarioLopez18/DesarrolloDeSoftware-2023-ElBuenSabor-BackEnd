@@ -39,6 +39,9 @@ public class ElBuenSaborApplication {
 	public RecetaRepository recetaRepository;
 
 	@Autowired
+	public FacturaRepository facturaRepository;
+
+	@Autowired
 	public DetalleArticuloManufacturadoRepository detalleArticuloManufacturadoRepository;
 
 	@Autowired
@@ -49,6 +52,10 @@ public class ElBuenSaborApplication {
 
 	@Autowired
 	public CarritoRepository carritoRepository;
+
+	@Autowired
+	public DetalleFacturaRepository detalleFacturaRepository;
+
 	public static void main(String[] args) {
 		SpringApplication.run(ElBuenSaborApplication.class, args);
 	}
@@ -331,13 +338,20 @@ public class ElBuenSaborApplication {
 			detalleArticuloManufacturado1.setSubmissionDateAlta(fechaActual);
 			detalleArticuloManufacturadoRepository.save(detalleArticuloManufacturado1);
 
-			//RubroArticuloManufacturado rubro1 = RubroArticuloManufacturado.builder()
-			//		.denominacion("Hamburguesa")
-			//		.rubroPadre(null)
-			//		.build();
-			//rubro1.setSubmissionDateAlta(fechaActual);
-			//rubroArticuloRepository.save(rubro1);
+			RubroArticuloManufacturado rubroArticuloManufacturadoPizza = RubroArticuloManufacturado.builder()
+					.denominacion("Pizzas")
+					.build();
+			rubroArticuloRepository.save(rubroArticuloManufacturadoPizza);
 
+			RubroArticuloManufacturado rubroArticuloManufacturadoHamburguesa = RubroArticuloManufacturado.builder()
+					.denominacion("Hamburguesa")
+					.build();
+			rubroArticuloRepository.save(rubroArticuloManufacturadoHamburguesa);
+
+			RubroArticuloManufacturado rubroArticuloManufacturadoPapas = RubroArticuloManufacturado.builder()
+					.denominacion("Papas Fritas")
+					.build();
+			rubroArticuloRepository.save(rubroArticuloManufacturadoPapas);
 
 			ArticuloManufacturado articuloManufacturado1 = ArticuloManufacturado.builder()
 					.costo(BigDecimal.valueOf(1850))
@@ -348,6 +362,8 @@ public class ElBuenSaborApplication {
 					.tiempoEstimadoCocina(15)
 					.urlImagen("URLPizza")
 					.detalleArticuloManufacturado(List.of(detalleArticuloManufacturado1))
+					.rubroArticuloManufacturado(rubroArticuloManufacturadoPizza)
+					.receta(receta1)
 					.build();
 			articuloManufacturado1.setSubmissionDateAlta(fechaActual);
 			articuloManufacturadoRepository.save(articuloManufacturado1);
@@ -360,6 +376,8 @@ public class ElBuenSaborApplication {
 					.categoria(CategoriaProducto.HAMBUERGUESA)
 					.tiempoEstimadoCocina(20)
 					.urlImagen("")
+					.rubroArticuloManufacturado(rubroArticuloManufacturadoHamburguesa)
+					.receta(receta2)
 					.build();
 			articuloManufacturado2.setSubmissionDateAlta(fechaActual);
 			articuloManufacturadoRepository.save(articuloManufacturado2);
@@ -372,6 +390,8 @@ public class ElBuenSaborApplication {
 					.categoria(CategoriaProducto.HAMBUERGUESA)
 					.tiempoEstimadoCocina(15)
 					.urlImagen("")
+					.rubroArticuloManufacturado(rubroArticuloManufacturadoHamburguesa)
+					.receta(receta3)
 					.build();
 			articuloManufacturado3.setSubmissionDateAlta(fechaActual);
 			articuloManufacturadoRepository.save(articuloManufacturado3);
@@ -434,12 +454,15 @@ public class ElBuenSaborApplication {
 					.formaPago(FormaPago.MERCADO_PAGO)
 					.totalVenta(BigDecimal.valueOf(12000))
 					.build();
+			facturaRepository.save(factura1);
 
 			DetalleFactura detalleFactura1 = DetalleFactura.builder()
 					.cantidad(1)
 					.subtotal(BigDecimal.valueOf(12000))
 					.articuloManufacturado(articuloManufacturado1)
 					.build();
+
+			detalleFacturaRepository.save(detalleFactura1);
 
 		};
 
