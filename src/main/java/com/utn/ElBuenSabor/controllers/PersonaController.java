@@ -2,6 +2,7 @@ package com.utn.ElBuenSabor.controllers;
 
 
 import com.utn.ElBuenSabor.dtos.DTOCambiarDatos;
+import com.utn.ElBuenSabor.dtos.DTOPersonaClientes;
 import com.utn.ElBuenSabor.entities.Persona;
 import com.utn.ElBuenSabor.services.PersonaServiceImpl;
 import org.springframework.data.domain.Pageable;
@@ -58,7 +59,7 @@ public class PersonaController extends BaseControllerImpl<Persona, PersonaServic
     @GetMapping("/clientes")
     public ResponseEntity<?> findClientes() {
         try {
-            List<Persona> clientes = servicio.findClientes();
+            List<DTOPersonaClientes> clientes = servicio.findClientes();
             return ResponseEntity.status(HttpStatus.OK).body(clientes);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"" + e.getMessage() + "\"}");

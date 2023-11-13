@@ -1,5 +1,6 @@
 package com.utn.ElBuenSabor.repositories;
 
+import com.utn.ElBuenSabor.dtos.DTOPersonaClientes;
 import com.utn.ElBuenSabor.dtos.DTORankingPersonas;
 import com.utn.ElBuenSabor.entities.Persona;
 import org.springframework.data.domain.Page;
@@ -40,8 +41,14 @@ public interface PersonaRepository  extends BaseRepository<Persona, Long> {
     List<DTORankingPersonas> rankingPersonas(@Param("desde") Date desde, @Param("hasta") Date hasta);
 
    
-    @Query("SELECT p FROM Persona p WHERE p.usuario.rol = 'CLIENTE'")
-    List<Persona> findClientes();
+    /*@Query("SELECT p FROM Persona p WHERE p.usuario.rol = 'CLIENTE'")
+     */
+    @Query("SELECT new com.utn.ElBuenSabor.dtos.DTOPersonaClientes(" +
+            "p.id, p.nombre, p.apellido, p.telefono, p.email, p.usuario.rol) " +
+            "FROM Persona p " +
+            "WHERE p.usuario.rol = 'CLIENTE'")
+    List<DTOPersonaClientes> findClientes();
+
 
     @Query("SELECT p FROM Persona p WHERE p.usuario.rol = 'ADMINISTRADOR' OR p.usuario.rol = 'CAJERO' OR p.usuario.rol = 'DELIVERY' OR p.usuario.rol = 'COCINERO'")
     List <Persona> findEmpleados();

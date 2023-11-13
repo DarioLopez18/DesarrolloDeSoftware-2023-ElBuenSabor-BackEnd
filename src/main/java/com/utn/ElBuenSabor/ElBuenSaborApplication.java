@@ -519,6 +519,18 @@ public class ElBuenSaborApplication {
 					.build();
 			carrito1.setSubmissionDateAlta(fechaActual);
 
+			Carrito carrito2 = Carrito.builder()
+					.numeroCarrito(2)
+					.carritoProductos(List.of(carritoProducto1, carritoProducto2))
+					.build();
+			carrito2.setSubmissionDateAlta(fechaActual);
+
+			Carrito carrito3 = Carrito.builder()
+					.numeroCarrito(3)
+					.carritoProductos(List.of(carritoProducto1))
+					.build();
+			carrito3.setSubmissionDateAlta(fechaActual);
+
 			DetallePedido detallePedido1 = DetallePedido.builder()
 					.cantidad(3)
 					.subtotal(BigDecimal.valueOf(3.0))
@@ -534,7 +546,14 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado2)
 					.build();
 			detallePedido2.setSubmissionDateAlta(fechaActual);
-			detallePedidoRepository.save(detallePedido2);
+
+			DetallePedido detallePedido3 = DetallePedido.builder()
+					.cantidad(3)
+					.subtotal(BigDecimal.valueOf(6.0))
+					.subtotalCosto(BigDecimal.valueOf(22.0))
+					.articuloManufacturado(articuloManufacturado3)
+					.build();
+			detallePedido3.setSubmissionDateAlta(fechaActual);
 
 			DetalleFactura detalleFactura1 = DetalleFactura.builder()
 					.cantidad(1)
@@ -542,6 +561,20 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado1)
 					.build();
 			detalleFactura1.setSubmissionDateAlta(fechaActual);
+
+			DetalleFactura detalleFactura2 = DetalleFactura.builder()
+					.cantidad(2)
+					.subtotal(BigDecimal.valueOf(13000))
+					.articuloManufacturado(articuloManufacturado2)
+					.build();
+			detalleFactura2.setSubmissionDateAlta(fechaActual);
+
+			DetalleFactura detalleFactura3 = DetalleFactura.builder()
+					.cantidad(3)
+					.subtotal(BigDecimal.valueOf(15000))
+					.articuloManufacturado(articuloManufacturado3)
+					.build();
+			detalleFactura3.setSubmissionDateAlta(fechaActual);
 
 			Factura factura1 = Factura.builder()
 					.fechaFacturacion(fechaActual)
@@ -554,6 +587,31 @@ public class ElBuenSaborApplication {
 					.detalles(List.of(detalleFactura1))
 					.build();
 			factura1.setSubmissionDateAlta(fechaActual);
+			factura1.agregarDetalle(detalleFactura1);
+
+			Factura factura2 = Factura.builder()
+					.fechaFacturacion(fechaActual)
+					.mpPaymentId(001L)
+					.mpMerchantOrderId(135456L)
+					.mpPreferenceId("")
+					.mpPaymentType("Efectivo")
+					.formaPago(FormaPago.EFECTIVO)
+					.totalVenta(BigDecimal.valueOf(13000))
+					.build();
+			factura2.setSubmissionDateAlta(fechaActual);
+			factura2.agregarDetalle(detalleFactura2);
+
+			Factura factura3 = Factura.builder()
+					.fechaFacturacion(fechaActual)
+					.mpPaymentId(001L)
+					.mpMerchantOrderId(135456L)
+					.mpPreferenceId("")
+					.mpPaymentType("Efectivo")
+					.formaPago(FormaPago.EFECTIVO)
+					.totalVenta(BigDecimal.valueOf(15000))
+					.build();
+			factura3.setSubmissionDateAlta(fechaActual);
+			factura3.agregarDetalle(detalleFactura3);
 
 			Date fechaActualnew = new Date();
 
@@ -582,6 +640,41 @@ public class ElBuenSaborApplication {
 					.build();
 			pedido1.setSubmissionDateAlta(fechaActual);
 			pedidoRepository.save(pedido1);
+
+			Pedido pedido2 = Pedido.builder()
+					.factura(factura2)
+					.detalles(List.of(detallePedido2))
+					.estado(EstadoPedido.EN_CAMINO)
+					.formaPago(FormaPago.EFECTIVO)
+					.horaEstimadaFinalizacion(fechaActualnew)
+					.tipoEnvio(TipoEnvio.TAKE_AWAY)
+					.total(BigDecimal.valueOf(12000))
+					.totalCosto(BigDecimal.valueOf(800))
+					.carrito(carrito2)
+					.persona(cliente2)
+					.domicilioEntrega(domicilio2)
+					.fechaPedido(fechaActualnew)
+					.build();
+			pedido2.setSubmissionDateAlta(fechaActual);
+			pedidoRepository.save(pedido2);
+
+			Pedido pedido3 = Pedido.builder()
+					.factura(factura3)
+					.detalles(List.of(detallePedido3))
+					.estado(EstadoPedido.PAGADO)
+					.formaPago(FormaPago.EFECTIVO)
+					.horaEstimadaFinalizacion(fechaActualnew)
+					.tipoEnvio(TipoEnvio.TAKE_AWAY)
+					.total(BigDecimal.valueOf(15000))
+					.totalCosto(BigDecimal.valueOf(800))
+					.carrito(carrito3)
+					.persona(cliente1)
+					.domicilioEntrega(domicilio3)
+					.fechaPedido(fechaActualnew)
+					.build();
+			pedido3.setSubmissionDateAlta(fechaActual);
+			pedidoRepository.save(pedido3);
+
 
 			NotaCredito notaCredito = NotaCredito.builder()
 					.factura(factura1)

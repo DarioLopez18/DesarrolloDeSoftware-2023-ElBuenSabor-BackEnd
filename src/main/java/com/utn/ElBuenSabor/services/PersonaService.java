@@ -1,6 +1,7 @@
 package com.utn.ElBuenSabor.services;
 
 import com.utn.ElBuenSabor.dtos.DTOCambiarDatos;
+import com.utn.ElBuenSabor.dtos.DTOPersonaClientes;
 import com.utn.ElBuenSabor.dtos.DTORankingPersonas;
 import com.utn.ElBuenSabor.entities.Persona;
 
@@ -18,7 +19,7 @@ public interface PersonaService extends BaseService<Persona, Long>{
 
     List<DTORankingPersonas> rankingPersonas(Date desde, Date hasta) throws Exception;
 
-    List<Persona> findClientes() throws Exception;
+    List<DTOPersonaClientes> findClientes() throws Exception;
 
     List<Persona> findEmpleados() throws Exception;
 
