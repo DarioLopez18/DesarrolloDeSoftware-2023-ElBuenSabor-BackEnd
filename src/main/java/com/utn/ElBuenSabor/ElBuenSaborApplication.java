@@ -465,7 +465,5 @@ public class ElBuenSaborApplication {
 			detalleFacturaRepository.save(detalleFactura1);
 
 		};
-
-
 	}
 }

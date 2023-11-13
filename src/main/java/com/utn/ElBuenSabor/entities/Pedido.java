@@ -74,6 +74,9 @@ public class Pedido extends Base {
     @Builder.Default
     private List<DetallePedido> detalles = new ArrayList<>();
 
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @JoinColumn(name = "id_carrito")
+    private Carrito carrito;
 
 
     public void agregarDetalle(DetallePedido detallePedido){
