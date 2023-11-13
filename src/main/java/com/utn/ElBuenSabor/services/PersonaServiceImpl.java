@@ -2,6 +2,7 @@ package com.utn.ElBuenSabor.services;
 
 import com.utn.ElBuenSabor.dtos.DTOCambiarDatos;
 import com.utn.ElBuenSabor.dtos.DTOPersona;
+import com.utn.ElBuenSabor.dtos.DTOPersonaClientes;
 import com.utn.ElBuenSabor.dtos.DTORankingPersonas;
 import com.utn.ElBuenSabor.entities.Persona;
 import com.utn.ElBuenSabor.repositories.BaseRepository;
@@ -78,9 +79,10 @@ public class PersonaServiceImpl extends BaseServiceImpl<Persona,Long> implements
     }
 
     @Override
-    public List<Persona> findClientes() throws Exception {
+    public List<DTOPersonaClientes> findClientes() throws Exception {
         try {
-            return personaRepository.findClientes();
+            List<DTOPersonaClientes> clientes = personaRepository.findClientes();
+            return clientes;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
         }

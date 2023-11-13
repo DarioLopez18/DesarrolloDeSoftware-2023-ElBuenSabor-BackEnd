@@ -497,6 +497,7 @@ public class ElBuenSaborApplication {
 					.mpPaymentType("Tarjeta")
 					.formaPago(FormaPago.MERCADO_PAGO)
 					.totalVenta(BigDecimal.valueOf(12000))
+					.detalles(List.of(detalleFactura1))
 					.build();
 			factura1.setSubmissionDateAlta(fechaActual);
 			factura1.agregarDetalle(detalleFactura1);
@@ -524,7 +525,6 @@ public class ElBuenSaborApplication {
 					.build();
 			factura3.setSubmissionDateAlta(fechaActual);
 			factura3.agregarDetalle(detalleFactura3);
-
 
 			Date fechaActualnew = new Date();
 
