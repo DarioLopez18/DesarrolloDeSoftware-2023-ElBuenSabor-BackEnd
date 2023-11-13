@@ -76,4 +76,13 @@ public class PersonaServiceImpl extends BaseServiceImpl<Persona,Long> implements
             throw new Exception(e.getMessage());
         }
     }
+
+    @Override
+    public List<Persona> findClientes() throws Exception {
+        try {
+            return personaRepository.findClientes();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 }

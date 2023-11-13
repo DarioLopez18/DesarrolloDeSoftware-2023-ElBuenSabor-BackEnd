@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 import java.util.Date;
+import java.util.List;
 
 @RestController
 @CrossOrigin(origins = "*")
@@ -51,6 +52,16 @@ public class PersonaController extends BaseControllerImpl<Persona, PersonaServic
             return ResponseEntity.status(HttpStatus.OK).body(servicio.rankingPersonas(desde, hasta));
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. Por favor, intente más tarde.\"}");
+        }
+    }
+
+    @GetMapping("/clientes")
+    public ResponseEntity<?> findClientes() {
+        try {
+            List<Persona> clientes = servicio.findClientes();
+            return ResponseEntity.status(HttpStatus.OK).body(clientes);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"" + e.getMessage() + "\"}");
         }
     }
 

@@ -30,6 +30,7 @@ public class Usuario extends Base {
     private String password;
 
     @NotNull
+    @Enumerated(EnumType.STRING)
     @Column (name = "rol", nullable = false)
     private Rol rol;
 
