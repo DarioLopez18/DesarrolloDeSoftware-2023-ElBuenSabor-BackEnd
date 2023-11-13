@@ -20,4 +20,6 @@ public interface PersonaService extends BaseService<Persona, Long>{
 
     List<Persona> findClientes() throws Exception;
 
+    List<Persona> findEmpleados() throws Exception;
+
 }

@@ -43,5 +43,8 @@ public interface PersonaRepository  extends BaseRepository<Persona, Long> {
     @Query("SELECT p FROM Persona p WHERE p.usuario.rol = 'CLIENTE'")
     List<Persona> findClientes();
 
+    @Query("SELECT p FROM Persona p WHERE p.usuario.rol = 'ADMINISTRADOR' OR p.usuario.rol = 'CAJERO' OR p.usuario.rol = 'DELIVERY' OR p.usuario.rol = 'COCINERO'")
+    List <Persona> findEmpleados();
+
 }
 

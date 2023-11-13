@@ -85,4 +85,13 @@ public class PersonaServiceImpl extends BaseServiceImpl<Persona,Long> implements
             throw new Exception(e.getMessage());
         }
     }
+
+    @Override
+    public List<Persona> findEmpleados() throws Exception {
+        try {
+            return personaRepository.findEmpleados();
+        } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
 }

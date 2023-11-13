@@ -160,6 +160,93 @@ public class ElBuenSaborApplication {
 					.build();
 			cliente2.setSubmissionDateAlta(fechaActual);
 
+			Domicilio domicilioEmpleado1 = Domicilio.builder()
+					.calle("Calle empleado 1")
+					.codigoPostal(5501)
+					.localidad("Godoy Cruz")
+					.numero(1803)
+					.numeroDpto(1)
+					.pisoDpto(2)
+					.build();
+			domicilioEmpleado1.setSubmissionDateAlta(fechaActual);
+
+			Usuario usuarioEmpleado1 = Usuario.builder()
+					.auth0Id("auth123122312312")
+					.username("userEmpleado1")
+					.password("1234")
+					.rol(Rol.CAJERO)
+					.build();
+			usuarioEmpleado1.setSubmissionDateAlta(fechaActual);
+
+			Persona empleado1 = Persona.builder()
+					.apellido("Empleado")
+					.nombre("1")
+					.domicilios(List.of(domicilioEmpleado1))
+					.email("empleado1@gmail.com")
+					.telefono("2616150281")
+					.usuario(usuarioEmpleado1)
+					.build();
+			empleado1.setSubmissionDateAlta(fechaActual);
+			personaRepository.save(empleado1);
+
+			Domicilio domicilioEmpleado2 = Domicilio.builder()
+					.calle("Calle empleado 1")
+					.codigoPostal(5501)
+					.localidad("Godoy Cruz")
+					.numero(1803)
+					.numeroDpto(1)
+					.pisoDpto(2)
+					.build();
+			domicilioEmpleado1.setSubmissionDateAlta(fechaActual);
+
+			Usuario usuarioEmpleado2 = Usuario.builder()
+					.auth0Id("auth123122312313")
+					.username("userEmpleado1")
+					.password("1234")
+					.rol(Rol.ADMINISTRADOR)
+					.build();
+			usuarioEmpleado1.setSubmissionDateAlta(fechaActual);
+
+			Persona empleado2 = Persona.builder()
+					.apellido("Empleado")
+					.nombre("2")
+					.domicilios(List.of(domicilioEmpleado2))
+					.email("empleado2@gmail.com")
+					.telefono("2616150281")
+					.usuario(usuarioEmpleado2)
+					.build();
+			empleado1.setSubmissionDateAlta(fechaActual);
+			personaRepository.save(empleado2);
+
+			Domicilio domicilioEmpleado3 = Domicilio.builder()
+					.calle("Calle empleado 1")
+					.codigoPostal(5501)
+					.localidad("Godoy Cruz")
+					.numero(1803)
+					.numeroDpto(1)
+					.pisoDpto(2)
+					.build();
+			domicilioEmpleado1.setSubmissionDateAlta(fechaActual);
+
+			Usuario usuarioEmpleado3 = Usuario.builder()
+					.auth0Id("auth123122312315")
+					.username("userEmpleado1")
+					.password("1234")
+					.rol(Rol.COCINERO)
+					.build();
+			usuarioEmpleado1.setSubmissionDateAlta(fechaActual);
+
+			Persona empleado3 = Persona.builder()
+					.apellido("Empleado")
+					.nombre("3")
+					.domicilios(List.of(domicilioEmpleado3))
+					.email("empleado3@gmail.com")
+					.telefono("2616150281")
+					.usuario(usuarioEmpleado3)
+					.build();
+			empleado1.setSubmissionDateAlta(fechaActual);
+			personaRepository.save(empleado3);
+
 			// Guardar el nuevo cliente en el repositorio
 			personaRepository.save(cliente2);
 			

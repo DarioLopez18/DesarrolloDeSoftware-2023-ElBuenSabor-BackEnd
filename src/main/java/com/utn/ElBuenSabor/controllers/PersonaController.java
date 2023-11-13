@@ -65,4 +65,14 @@ public class PersonaController extends BaseControllerImpl<Persona, PersonaServic
         }
     }
 
+    @GetMapping("/empleados")
+    public ResponseEntity<?> findEmpleados() {
+        try {
+            List<Persona> empleados = servicio.findEmpleados();
+            return ResponseEntity.status(HttpStatus.OK).body(empleados);
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\": \"" + e.getMessage() + "\"}");
+        }
+    }
+
 }
