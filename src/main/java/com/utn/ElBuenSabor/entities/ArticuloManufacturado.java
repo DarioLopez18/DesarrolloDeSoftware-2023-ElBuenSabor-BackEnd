@@ -7,7 +7,6 @@ import lombok.*;
 
 
 import java.math.BigDecimal;
-import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -44,7 +43,7 @@ public class ArticuloManufacturado extends Base {
     @Column(length = 500, name = "url_imagen")
     private String urlImagen;
 
-    
+    @NotNull
     @OneToMany()
     @JoinColumn(name = "id_articulo_manufacturado")
     private List<DetalleArticuloManufacturado> detalleArticuloManufacturado;
