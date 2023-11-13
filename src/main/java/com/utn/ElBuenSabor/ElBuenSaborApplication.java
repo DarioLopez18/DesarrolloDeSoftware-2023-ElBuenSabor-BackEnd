@@ -532,9 +532,9 @@ public class ElBuenSaborApplication {
 			carrito3.setSubmissionDateAlta(fechaActual);
 
 			DetallePedido detallePedido1 = DetallePedido.builder()
-					.cantidad(3)
+					.cantidad(1)
 					.subtotal(BigDecimal.valueOf(3.0))
-					.subtotalCosto(BigDecimal.valueOf(15.0))
+					.subtotalCosto(BigDecimal.valueOf(3.0))
 					.articuloManufacturado(articuloManufacturado1)
 					.build();
 			detallePedido1.setSubmissionDateAlta(fechaActual);
@@ -542,18 +542,26 @@ public class ElBuenSaborApplication {
 			DetallePedido detallePedido2 = DetallePedido.builder()
 					.cantidad(2)
 					.subtotal(BigDecimal.valueOf(4.0))
-					.subtotalCosto(BigDecimal.valueOf(20.0))
+					.subtotalCosto(BigDecimal.valueOf(8.0))
 					.articuloManufacturado(articuloManufacturado2)
 					.build();
 			detallePedido2.setSubmissionDateAlta(fechaActual);
 
 			DetallePedido detallePedido3 = DetallePedido.builder()
 					.cantidad(3)
-					.subtotal(BigDecimal.valueOf(6.0))
-					.subtotalCosto(BigDecimal.valueOf(22.0))
-					.articuloManufacturado(articuloManufacturado3)
+					.subtotal(BigDecimal.valueOf(5.0))
+					.subtotalCosto(BigDecimal.valueOf(15.0))
+					.articuloManufacturado(articuloManufacturado2)
 					.build();
 			detallePedido3.setSubmissionDateAlta(fechaActual);
+
+			NotaCredito notaCredito1 = NotaCredito.builder()
+					.factura(null)
+					.persona(cliente1)
+					.monto(BigDecimal.valueOf(20.0))
+					.build();
+			notaCreditoRepository.save(notaCredito1);
+
 
 			DetalleFactura detalleFactura1 = DetalleFactura.builder()
 					.cantidad(1)
@@ -584,7 +592,6 @@ public class ElBuenSaborApplication {
 					.mpPaymentType("Tarjeta")
 					.formaPago(FormaPago.MERCADO_PAGO)
 					.totalVenta(BigDecimal.valueOf(12000))
-					.detalles(List.of(detalleFactura1))
 					.build();
 			factura1.setSubmissionDateAlta(fechaActual);
 			factura1.agregarDetalle(detalleFactura1);
