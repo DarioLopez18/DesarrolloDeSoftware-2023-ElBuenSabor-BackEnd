@@ -44,7 +44,7 @@ public class ArticuloManufacturado extends Base {
     @Column(length = 500, name = "url_imagen")
     private String urlImagen;
 
-    @NotNull
+    
     @OneToMany()
     @JoinColumn(name = "id_articulo_manufacturado")
     private List<DetalleArticuloManufacturado> detalleArticuloManufacturado;
