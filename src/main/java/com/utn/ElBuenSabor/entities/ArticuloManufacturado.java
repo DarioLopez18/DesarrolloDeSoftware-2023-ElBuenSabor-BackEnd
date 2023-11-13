@@ -44,6 +44,10 @@ public class ArticuloManufacturado extends Base {
     @Column(length = 500, name = "url_imagen")
     private String urlImagen;
 
+<<<<<<< HEAD
+=======
+    
+>>>>>>> 680d68667abf76cfae73747eb095ae7c2badb6ac
     @OneToMany()
     @JoinColumn(name = "id_articulo_manufacturado")
     private List<DetalleArticuloManufacturado> detalleArticuloManufacturado;
