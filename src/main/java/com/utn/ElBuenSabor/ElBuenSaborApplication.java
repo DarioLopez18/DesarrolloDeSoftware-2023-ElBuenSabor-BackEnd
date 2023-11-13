@@ -304,6 +304,14 @@ public class ElBuenSaborApplication {
 			detalleArticuloManufacturado1.setSubmissionDateAlta(fechaActual);
 			detalleArticuloManufacturadoRepository.save(detalleArticuloManufacturado1);
 
+			//RubroArticuloManufacturado rubro1 = RubroArticuloManufacturado.builder()
+			//		.denominacion("Hamburguesa")
+			//		.rubroPadre(null)
+			//		.build();
+			//rubro1.setSubmissionDateAlta(fechaActual);
+			//rubroArticuloRepository.save(rubro1);
+
+
 			ArticuloManufacturado articuloManufacturado1 = ArticuloManufacturado.builder()
 					.costo(BigDecimal.valueOf(1850))
 					.denominacion("Pizza")

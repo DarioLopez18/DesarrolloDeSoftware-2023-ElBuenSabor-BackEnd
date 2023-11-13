@@ -32,9 +32,9 @@ public class ArticuloManufacturadoController extends BaseControllerImpl<Articulo
     }
 
     @GetMapping("/porRubro")
-    public ResponseEntity<?> searchPorRubro(@RequestParam String denominacion, Pageable pageable) {
+    public ResponseEntity<?> searchPorRubro(@RequestParam String categoria, Pageable pageable) {
         try {
-            return ResponseEntity.status(HttpStatus.OK).body(servicio.porRubro(denominacion, pageable));
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.porRubro(categoria, pageable));
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
             }
