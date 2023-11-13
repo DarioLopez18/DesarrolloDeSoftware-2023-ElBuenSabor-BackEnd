@@ -14,7 +14,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
-import java.util.concurrent.Callable;
 
 @SpringBootApplication
 public class ElBuenSaborApplication {
@@ -56,6 +55,11 @@ public class ElBuenSaborApplication {
 	@Autowired
 	public DetalleFacturaRepository detalleFacturaRepository;
 
+	@Autowired
+	public PedidoRepository pedidoRepository;
+
+	@Autowired
+	public NotaCreditoRepository notaCreditoRepository;
 	public static void main(String[] args) {
 		SpringApplication.run(ElBuenSaborApplication.class, args);
 	}
@@ -341,16 +345,19 @@ public class ElBuenSaborApplication {
 			RubroArticuloManufacturado rubroArticuloManufacturadoPizza = RubroArticuloManufacturado.builder()
 					.denominacion("Pizzas")
 					.build();
+			rubroArticuloManufacturadoPizza.setSubmissionDateAlta(fechaActual);
 			rubroArticuloRepository.save(rubroArticuloManufacturadoPizza);
 
 			RubroArticuloManufacturado rubroArticuloManufacturadoHamburguesa = RubroArticuloManufacturado.builder()
 					.denominacion("Hamburguesa")
 					.build();
+			rubroArticuloHamburguesa.setSubmissionDateAlta(fechaActual);
 			rubroArticuloRepository.save(rubroArticuloManufacturadoHamburguesa);
 
 			RubroArticuloManufacturado rubroArticuloManufacturadoPapas = RubroArticuloManufacturado.builder()
 					.denominacion("Papas Fritas")
 					.build();
+			rubroArticuloManufacturadoPapas.setSubmissionDateAlta(fechaActual);
 			rubroArticuloRepository.save(rubroArticuloManufacturadoPapas);
 
 			ArticuloManufacturado articuloManufacturado1 = ArticuloManufacturado.builder()
@@ -418,14 +425,12 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado3)
 					.build();
 			carritoProducto3.setSubmissionDateAlta(fechaActual);
-			carritoProductoRepository.save(carritoProducto3);
 
 			Carrito carrito1 = Carrito.builder()
 					.numeroCarrito(1)
 					.carritoProductos(List.of(carritoProducto1, carritoProducto2, carritoProducto3))
 					.build();
 			carrito1.setSubmissionDateAlta(fechaActual);
-			carritoRepository.save(carrito1);
 
 			DetallePedido detallePedido1 = DetallePedido.builder()
 					.cantidad(3)
@@ -434,7 +439,6 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado1)
 					.build();
 			detallePedido1.setSubmissionDateAlta(fechaActual);
-			detallePedidoRepository.save(detallePedido1);
 
 			DetallePedido detallePedido2 = DetallePedido.builder()
 					.cantidad(2)
@@ -454,16 +458,51 @@ public class ElBuenSaborApplication {
 					.formaPago(FormaPago.MERCADO_PAGO)
 					.totalVenta(BigDecimal.valueOf(12000))
 					.build();
-			facturaRepository.save(factura1);
+			factura1.setSubmissionDateAlta(fechaActual);
 
 			DetalleFactura detalleFactura1 = DetalleFactura.builder()
 					.cantidad(1)
 					.subtotal(BigDecimal.valueOf(12000))
 					.articuloManufacturado(articuloManufacturado1)
 					.build();
-
+			detalleFactura1.setSubmissionDateAlta(fechaActual);
 			detalleFacturaRepository.save(detalleFactura1);
 
+			Date fechaActualnew = new Date();
+
+			// Define el formato deseado
+			String formatoFecha = "yyyy-MM-dd HH:mm:ss";
+
+			// Crea un objeto SimpleDateFormat con el formato especificado
+			SimpleDateFormat sdf = new SimpleDateFormat(formatoFecha);
+
+			// Formatea la fecha según el patrón definido
+			String fechaFormateada = sdf.format(fechaActualnew);
+
+			Pedido pedido1 = Pedido.builder()
+					.factura(factura1)
+					.detalles(List.of(detallePedido1))
+					.estado(EstadoPedido.A_PREPARAR)
+					.formaPago(FormaPago.MERCADO_PAGO)
+					.horaEstimadaFinalizacion(fechaActualnew)
+					.tipoEnvio(TipoEnvio.DELIVERY)
+					.total(BigDecimal.valueOf(10000))
+					.totalCosto(BigDecimal.valueOf(600))
+					.carrito(carrito1)
+					.persona(cliente1)
+					.domicilioEntrega(domicilio1)
+					.fechaPedido(fechaActualnew)
+					.build();
+			pedido1.setSubmissionDateAlta(fechaActual);
+			pedidoRepository.save(pedido1);
+
+			NotaCredito notaCredito = NotaCredito.builder()
+					.factura(factura1)
+					.monto(factura1.getTotalVenta())
+					.persona(cliente1)
+					.build();
+			notaCredito.setSubmissionDateAlta(fechaActual);
+			notaCreditoRepository.save(notaCredito);
 		};
 	}
 }
