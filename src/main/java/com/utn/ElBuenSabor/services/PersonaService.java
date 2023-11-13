@@ -18,4 +18,6 @@ public interface PersonaService extends BaseService<Persona, Long>{
 
     List<DTORankingPersonas> rankingPersonas(Date desde, Date hasta) throws Exception;
 
+    List<Persona> findClientes() throws Exception;
+
 }

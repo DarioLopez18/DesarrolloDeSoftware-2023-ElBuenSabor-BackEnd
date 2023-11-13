@@ -26,6 +26,7 @@ public interface PersonaRepository  extends BaseRepository<Persona, Long> {
     )
     Page<Persona> searchNativo(@Param("filtro") String filtro, Pageable pageable);
 
+
     @Query(
             value = "SELECT sum(f.total_venta) as total, p.nombre as persona, count(e.id) as cantidadPedidos " +
                     "FROM persona as p " +
@@ -37,5 +38,10 @@ public interface PersonaRepository  extends BaseRepository<Persona, Long> {
             nativeQuery = true
     )
     List<DTORankingPersonas> rankingPersonas(@Param("desde") Date desde, @Param("hasta") Date hasta);
+
+   
+    @Query("SELECT p FROM Persona p WHERE p.usuario.rol = 'CLIENTE'")
+    List<Persona> findClientes();
+
 }
 
