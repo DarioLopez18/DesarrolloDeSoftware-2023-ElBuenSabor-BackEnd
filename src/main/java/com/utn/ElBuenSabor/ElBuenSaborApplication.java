@@ -424,7 +424,7 @@ public class ElBuenSaborApplication {
 			DetalleFactura detalleFactura1 = DetalleFactura.builder()
 					.cantidad(1)
 					.subtotal(BigDecimal.valueOf(12000))
-					.articuloManufacturado(null)
+					.articuloManufacturado(articuloManufacturado1)
 					.build();
 
 		};
