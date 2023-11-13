@@ -420,7 +420,12 @@ public class ElBuenSaborApplication {
 					.formaPago(FormaPago.MERCADO_PAGO)
 					.totalVenta(BigDecimal.valueOf(12000))
 					.build();
-			
+
+			DetalleFactura detalleFactura1 = DetalleFactura.builder()
+					.cantidad(1)
+					.subtotal(BigDecimal.valueOf(12000))
+					.articuloManufacturado(null)
+					.build();
 
 		};
 
