@@ -389,7 +389,22 @@ public class ElBuenSaborApplication {
 					.build();
 			detallePedido2.setSubmissionDateAlta(fechaActual);
 			detallePedidoRepository.save(detallePedido2);
-			
+
+			Factura factura1 = Factura.builder()
+					.fechaFacturacion(fechaActual)
+					.mpPaymentId(Long.valueOf("001"))
+					.mpMerchantOrderId(Long.valueOf(""))
+					.mpPreferenceId(String.valueOf(""))
+					.mpPaymentType(String.valueOf("Tarjeta"))
+					.formaPago(FormaPago.MERCADO_PAGO)
+					.totalVenta(BigDecimal.valueOf(12000))
+					.build();
+
+			DetalleFactura detalleFactura1 = DetalleFactura.builder()
+					.cantidad(1)
+					.subtotal(BigDecimal.valueOf(12000))
+					.articuloManufacturado(articuloManufacturado1)
+					.build();
 
 		};
 
