@@ -449,6 +449,13 @@ public class ElBuenSaborApplication {
 			detallePedido2.setSubmissionDateAlta(fechaActual);
 			detallePedidoRepository.save(detallePedido2);
 
+			DetalleFactura detalleFactura1 = DetalleFactura.builder()
+					.cantidad(1)
+					.subtotal(BigDecimal.valueOf(12000))
+					.articuloManufacturado(articuloManufacturado1)
+					.build();
+			detalleFactura1.setSubmissionDateAlta(fechaActual);
+
 			Factura factura1 = Factura.builder()
 					.fechaFacturacion(fechaActual)
 					.mpPaymentId(001L)
@@ -457,16 +464,9 @@ public class ElBuenSaborApplication {
 					.mpPaymentType("Tarjeta")
 					.formaPago(FormaPago.MERCADO_PAGO)
 					.totalVenta(BigDecimal.valueOf(12000))
+					.detalles(List.of(detalleFactura1))
 					.build();
 			factura1.setSubmissionDateAlta(fechaActual);
-
-			DetalleFactura detalleFactura1 = DetalleFactura.builder()
-					.cantidad(1)
-					.subtotal(BigDecimal.valueOf(12000))
-					.articuloManufacturado(articuloManufacturado1)
-					.build();
-			detalleFactura1.setSubmissionDateAlta(fechaActual);
-			detalleFacturaRepository.save(detalleFactura1);
 
 			Date fechaActualnew = new Date();
 
