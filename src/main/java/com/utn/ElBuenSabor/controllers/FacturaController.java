@@ -33,11 +33,11 @@ public class FacturaController extends BaseControllerImpl<Factura, FacturaServic
     }
 
     @GetMapping("/searchTotalVentas")
-    public ResponseEntity<?> searchTotalVentas(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date desde, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date hasta){
+    public ResponseEntity<?> searchTotalVentas(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date desde, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE)  Date hasta) {
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.searchTotalVentas(desde, hasta));
-        }catch (Exception e){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
-            }
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. Por favor, intente más tarde.\"}");
+        }
     }
 }

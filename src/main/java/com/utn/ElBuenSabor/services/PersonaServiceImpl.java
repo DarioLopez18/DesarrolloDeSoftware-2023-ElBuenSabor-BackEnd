@@ -69,16 +69,6 @@ public class PersonaServiceImpl extends BaseServiceImpl<Persona,Long> implements
     }
 
     @Override
-    public List<DTORankingPersonas> rankingPersonas(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date desde, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date hasta) throws Exception{
-        try{
-            List<DTORankingPersonas> personas = personaRepository.rankingPersonas(desde,hasta);
-            return personas;
-        }catch (Exception e){
-            throw new Exception(e.getMessage());
-        }
-    }
-
-    @Override
     public List<DTOPersonaClientes> findClientes() throws Exception {
         try {
             List<DTOPersonaClientes> clientes = personaRepository.findClientes();
@@ -93,6 +83,16 @@ public class PersonaServiceImpl extends BaseServiceImpl<Persona,Long> implements
         try {
             return personaRepository.findEmpleados();
         } catch (Exception e) {
+            throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public List<DTORankingPersonas> rankingPersonas(@DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date desde, @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date hasta) throws Exception{
+        try{
+            List<DTORankingPersonas> personas = personaRepository.rankingPersonas(desde,hasta);
+            return personas;
+        }catch (Exception e){
             throw new Exception(e.getMessage());
         }
     }
