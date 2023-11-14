@@ -28,7 +28,7 @@ public interface FacturaRepository extends BaseRepository<Factura, Long> {
     Page<Factura> searchNativo(@Param("filtro") String filtro, Pageable pageable);
 
     @Query(
-            value = "SELECT SUM(totalVenta) FROM factura WHERE fechaFacturacion BETWEEN :desde AND :hasta",
+            value = "SELECT SUM(totalVenta) FROM factura WHERE factura.fecha_facturacion BETWEEN :desde AND :hasta",
             nativeQuery = true
     )
     BigDecimal searchTotalVentas(@Param("desde") Date desde, @Param("hasta") Date hasta);
