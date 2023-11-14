@@ -9,6 +9,7 @@ import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Locale;
 
 @Repository
 public interface PedidoRepository extends BaseRepository<Pedido, Long> {
@@ -27,6 +28,11 @@ public interface PedidoRepository extends BaseRepository<Pedido, Long> {
     )
     Page<Pedido> searchNativo(@Param("filtro") String filtro, Pageable pageable);
 
-
+    @Query(
+            value = "SELECT * FROM pedido " +
+                    "WHERE id_cliente = :idCliente",
+            nativeQuery = true
+    )
+    List<Pedido>findPedidosCliente(Long idCliente);
 
 }
