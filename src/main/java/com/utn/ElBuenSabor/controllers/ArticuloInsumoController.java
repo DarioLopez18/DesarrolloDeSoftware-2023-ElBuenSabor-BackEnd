@@ -1,6 +1,7 @@
 package com.utn.ElBuenSabor.controllers;
 import com.utn.ElBuenSabor.entities.ArticuloInsumo;
 import com.utn.ElBuenSabor.services.ArticuloInsumoServiceImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -32,8 +33,10 @@ public class ArticuloInsumoController extends BaseControllerImpl<ArticuloInsumo,
     }
 
     @GetMapping("/stockBajo")
-    public ResponseEntity<?> search(@RequestParam Pageable pageable) {
+    public ResponseEntity<?> search(@RequestParam(name = "page", defaultValue = "0") int page,
+                                    @RequestParam(name = "size", defaultValue = "10") int size) {
         try {
+            Pageable pageable = PageRequest.of(page, size);
             return ResponseEntity.status(HttpStatus.OK).body(servicio.getStockBajo(pageable));
         } catch (Exception e){
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
