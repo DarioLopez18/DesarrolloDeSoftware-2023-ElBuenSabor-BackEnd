@@ -28,6 +28,13 @@ public interface ArticuloManufacturadoRepository extends BaseRepository<Articulo
     )
     Page<ArticuloManufacturado> search(@Param("filtro") String filtro, Pageable pageable);
 
+    @Query(
+            value = "SELECT * FROM articulo_manufacturado WHERE articulo_manufacturado.categoria LIKE %:categoria% ",
+            countQuery = "SELECT count(*) FROM articulo_manufacturado",
+            nativeQuery = true
+    )
+    Page<ArticuloManufacturado> porRubro(@Param("categoria") String categoria, Pageable pageable);
+
     // Ordena los productos de mas vendidos a menos
     @Query(
             value = "SELECT a.denominacion, SUM(d.cantidad) AS cantidad_productos_vendidos " +
@@ -47,12 +54,5 @@ public interface ArticuloManufacturadoRepository extends BaseRepository<Articulo
             nativeQuery = true
     )
     List<DTORankingArticulosManufacturados> filtradoPorProductoVendidoPorFecha(@Param("filtro1") Date filtro1, @Param("filtro2") Date filtro2);
-
-    @Query(
-            value = "SELECT * FROM articulo_manufacturado WHERE articulo_manufacturado.categoria LIKE %:categoria% ",
-            countQuery = "SELECT count(*) FROM articulo_manufacturado",
-            nativeQuery = true
-    )
-    Page<ArticuloManufacturado> porRubro(@Param("categoria") String categoria, Pageable pageable);
 
 }

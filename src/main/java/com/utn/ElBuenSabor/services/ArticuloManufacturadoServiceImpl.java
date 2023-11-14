@@ -42,6 +42,15 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
             throw new Exception(e.getMessage());
         }
     }
+    @Override
+    public Page<ArticuloManufacturado> porRubro(String categoria, Pageable pageable) throws Exception{
+        try{
+            Page<ArticuloManufacturado> articuloManufacturado =articuloManufacturadoRepository.porRubro(categoria,pageable);
+            return articuloManufacturado;
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
 
     @Override
     public List<DTORankingArticulosManufacturados> filtradoPorProductoVendido() throws Exception {
@@ -61,15 +70,6 @@ public class ArticuloManufacturadoServiceImpl extends BaseServiceImpl<ArticuloMa
         } catch (Exception e) {
             throw new Exception(e.getMessage());
 
-        }
-    }
-    @Override
-    public Page<ArticuloManufacturado> porRubro(String categoria, Pageable pageable) throws Exception{
-        try{
-            Page<ArticuloManufacturado> articuloManufacturado =articuloManufacturadoRepository.porRubro(categoria,pageable);
-            return articuloManufacturado;
-        }catch (Exception e){
-            throw new Exception(e.getMessage());
         }
     }
 }

@@ -13,9 +13,9 @@ public interface ArticuloManufacturadoService extends BaseService<ArticuloManufa
     List<ArticuloManufacturado> search(String filtro) throws Exception;
     Page<ArticuloManufacturado> search(String filtro, Pageable pageable) throws Exception;
 
+    Page<ArticuloManufacturado> porRubro(String denominacion, Pageable pageable) throws Exception;
+
     List<DTORankingArticulosManufacturados> filtradoPorProductoVendido() throws Exception;
 
     List<DTORankingArticulosManufacturados> filtradoPorProductoVendidoPorFecha(Date filtro1, Date filtro2) throws Exception;
-
-    Page<ArticuloManufacturado> porRubro(String denominacion, Pageable pageable) throws Exception;
 }
