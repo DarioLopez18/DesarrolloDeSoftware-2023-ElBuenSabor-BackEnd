@@ -80,6 +80,7 @@ public class ElBuenSaborApplication {
 					.rol(Rol.CLIENTE)
 					.build();
 			usuario1.setSubmissionDateAlta(fechaActual);
+			usuarioRepository.save(usuario1);
 
 
 			Usuario usuario2 = Usuario.builder()
@@ -107,6 +108,7 @@ public class ElBuenSaborApplication {
 					.rol(Rol.DELIVERY)
 					.build();
 			usuario4.setSubmissionDateAlta(fechaActual);
+			usuarioRepository.save(usuario4);
 
 			Domicilio domicilio1 = Domicilio.builder()
 					.calle("Calle 1")
@@ -116,6 +118,7 @@ public class ElBuenSaborApplication {
 					.numeroDpto(12)
 					.build();
 			domicilio1.setSubmissionDateAlta(fechaActual);
+			domicilioRepository.save(domicilio1);
 
 			Domicilio domicilio2 = Domicilio.builder()
 					.calle("Calle 2")
@@ -125,6 +128,7 @@ public class ElBuenSaborApplication {
 					.numeroDpto(12)
 					.build();
 			domicilio2.setSubmissionDateAlta(fechaActual);
+			domicilioRepository.save(domicilio2);
 
 			//Crea y agrega domicilios al cliente asociado a este usuario
 			Persona cliente1 = Persona.builder()
@@ -148,6 +152,7 @@ public class ElBuenSaborApplication {
 					.numeroDpto(34)
 					.build();
 			domicilio3.setSubmissionDateAlta(fechaActual);
+			domicilioRepository.save(domicilio3);
 
 			// Crear un nuevo cliente asociado a usuario1
 			Persona cliente2 = Persona.builder()
@@ -159,6 +164,7 @@ public class ElBuenSaborApplication {
 					.usuario(usuario1)  // asociar con usuario1
 					.build();
 			cliente2.setSubmissionDateAlta(fechaActual);
+			personaRepository.save(cliente2);
 
 			Domicilio domicilioEmpleado1 = Domicilio.builder()
 					.calle("Calle empleado 1")
@@ -169,6 +175,7 @@ public class ElBuenSaborApplication {
 					.pisoDpto(2)
 					.build();
 			domicilioEmpleado1.setSubmissionDateAlta(fechaActual);
+			domicilioRepository.save(domicilioEmpleado1);
 
 			Usuario usuarioEmpleado1 = Usuario.builder()
 					.auth0Id("auth123122312312")
@@ -177,6 +184,7 @@ public class ElBuenSaborApplication {
 					.rol(Rol.CAJERO)
 					.build();
 			usuarioEmpleado1.setSubmissionDateAlta(fechaActual);
+			usuarioRepository.save(usuarioEmpleado1);
 
 			Persona empleado1 = Persona.builder()
 					.apellido("Empleado")
@@ -198,6 +206,7 @@ public class ElBuenSaborApplication {
 					.pisoDpto(2)
 					.build();
 			domicilioEmpleado2.setSubmissionDateAlta(fechaActual);
+			domicilioRepository.save(domicilioEmpleado2);
 
 			Usuario usuarioEmpleado2 = Usuario.builder()
 					.auth0Id("auth123122312313")
@@ -206,6 +215,7 @@ public class ElBuenSaborApplication {
 					.rol(Rol.ADMINISTRADOR)
 					.build();
 			usuarioEmpleado2.setSubmissionDateAlta(fechaActual);
+			usuarioRepository.save(usuarioEmpleado2);
 
 			Persona empleado2 = Persona.builder()
 					.apellido("Empleado")
@@ -227,6 +237,8 @@ public class ElBuenSaborApplication {
 					.pisoDpto(2)
 					.build();
 			domicilioEmpleado3.setSubmissionDateAlta(fechaActual);
+			domicilioRepository.save(domicilioEmpleado3);
+
 
 			Usuario usuarioEmpleado3 = Usuario.builder()
 					.auth0Id("auth123122312315")
@@ -235,6 +247,7 @@ public class ElBuenSaborApplication {
 					.rol(Rol.COCINERO)
 					.build();
 			usuarioEmpleado3.setSubmissionDateAlta(fechaActual);
+			usuarioRepository.save(usuarioEmpleado3);
 
 			Persona empleado3 = Persona.builder()
 					.apellido("Empleado")
@@ -247,7 +260,7 @@ public class ElBuenSaborApplication {
 			empleado3.setSubmissionDateAlta(fechaActual);
 			personaRepository.save(empleado3);
 
-			// Guardar el nuevo cliente en el repositorio
+			// Guardar el nuevo cliente en el repositorio ?????????????????????? porq aca soy vale, de donde sale esto=?
 			personaRepository.save(cliente2);
 			
             //-------------------------------------------------
@@ -607,7 +620,9 @@ public class ElBuenSaborApplication {
 					.totalVenta(BigDecimal.valueOf(12000))
 					.build();
 			factura1.setSubmissionDateAlta(fechaActual);
+			//esto esta bien asi o es con la list.of() ??
 			factura1.agregarDetalle(detalleFactura1);
+			//
 			facturaRepository.save(factura1);
 
 			Factura factura2 = Factura.builder()
