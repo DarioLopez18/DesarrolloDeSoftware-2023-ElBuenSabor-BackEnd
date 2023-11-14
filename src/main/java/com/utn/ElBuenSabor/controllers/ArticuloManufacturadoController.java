@@ -43,4 +43,23 @@ public class ArticuloManufacturadoController extends BaseControllerImpl<Articulo
             }
     }
 
+    @GetMapping("/rankingProducto")
+    public ResponseEntity<?> filtroPorProductoVendido() {
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.filtradoPorProductoVendido());
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. Por favor, intente más tarde.\"}");
+        }
+    }
+
+    @GetMapping("/rankingProductoRango")
+    public ResponseEntity<?> filtradoPorProductoVendidoPorFecha(@RequestParam String desde, @RequestParam String hasta) {
+        try {
+            java.sql.Date fechaDesde = java.sql.Date.valueOf(desde);
+            java.sql.Date fechaHasta = java.sql.Date.valueOf(hasta);
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.filtradoPorProductoVendidoPorFecha(fechaDesde, fechaHasta));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. Por favor, intente más tarde.\"}");
+        }
+    }
 }
