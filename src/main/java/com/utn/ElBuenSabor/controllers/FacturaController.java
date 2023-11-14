@@ -33,7 +33,8 @@ public class FacturaController extends BaseControllerImpl<Factura, FacturaServic
     }
 
     @GetMapping("/searchTotalVentas")
-    public ResponseEntity<?> searchTotalVentas(String desde, String hasta) {
+    public ResponseEntity<?> searchTotalVentas(@RequestParam String desde, @RequestParam String hasta) {
+
         try {
             java.sql.Date fechaDesde = java.sql.Date.valueOf(desde);
             java.sql.Date fechaHasta = java.sql.Date.valueOf(hasta);

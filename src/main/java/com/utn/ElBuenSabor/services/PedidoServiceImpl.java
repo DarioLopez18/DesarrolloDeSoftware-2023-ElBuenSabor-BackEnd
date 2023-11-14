@@ -58,4 +58,14 @@ public class PedidoServiceImpl extends BaseServiceImpl<Pedido, Long> implements 
             throw new Exception(e.getMessage());
         }
     }
+
+    @Override
+    public List<Pedido> findPedidosCliente(Long idCliente) throws Exception{
+        try{
+            List<Pedido> pedidos = pedidoRepository.findPedidosCliente(idCliente);
+            return pedidos;
+        }catch (Exception e){
+            throw new Exception(e.getMessage());
+        }
+    }
 }

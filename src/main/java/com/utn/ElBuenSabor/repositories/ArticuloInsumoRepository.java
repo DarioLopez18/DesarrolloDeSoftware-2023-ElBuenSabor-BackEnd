@@ -27,8 +27,8 @@ public interface ArticuloInsumoRepository extends BaseRepository<ArticuloInsumo,
     Page<ArticuloInsumo> searchNativo(@Param("filtro") String filtro, Pageable pageable);
 
     @Query(
-            value = "SELECT i FROM articulo_insumo i " +
-                    "WHERE stockActual <= stockMinimo * 1.20",
+            value = "SELECT * FROM articulo_insumo" +
+                    " WHERE articulo_insumo.stock_actual <= articulo_insumo.stock_minimo * 1.20",
             countQuery = "SELECT count(*) FROM articulo_insumo",
             nativeQuery = true)
     Page<ArticuloInsumo> getStockBajo(Pageable pageable);

@@ -42,5 +42,14 @@ public class PedidoController extends BaseControllerImpl<Pedido, PedidoServiceIm
             }
     }
 
+    @GetMapping("/PedidoCliente")
+    public ResponseEntity<?> findPedidosCliente(@RequestParam Long idCliente){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.findPedidosCliente(idCliente));
+        } catch (Exception e){
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(("{\"error\": \"" + e.getMessage() + "\"}"));
+        }
+    }
+
 
 }

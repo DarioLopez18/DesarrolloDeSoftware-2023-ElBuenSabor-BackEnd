@@ -641,7 +641,7 @@ public class ElBuenSaborApplication {
 					.total(BigDecimal.valueOf(10000))
 					.totalCosto(BigDecimal.valueOf(600))
 					.carrito(carrito1)
-					.persona(cliente1)
+					.persona(cliente2)
 					.domicilioEntrega(domicilio1)
 					.fechaPedido(fechaActualnew)
 					.build();

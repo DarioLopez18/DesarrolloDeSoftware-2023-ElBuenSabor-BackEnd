@@ -23,7 +23,7 @@ public class CarritoServiceImpl extends BaseServiceImpl<Carrito, Long> implement
     @Override
     public List<Carrito> search(Integer filtro) throws Exception{
         try{
-            List<Carrito> carritos = carritoRepository.findByNumeroCarritoContaining(filtro);
+            List<Carrito> carritos = carritoRepository.search(filtro);
             return carritos;
         }catch (Exception e){
             throw new Exception(e.getMessage());
@@ -33,7 +33,7 @@ public class CarritoServiceImpl extends BaseServiceImpl<Carrito, Long> implement
     @Override
     public Page<Carrito> search(Integer filtro, Pageable pageable) throws Exception{
         try{
-            Page<Carrito> carritos = carritoRepository.findByNumeroCarritoContaining(filtro,pageable);
+            Page<Carrito> carritos = carritoRepository.search(filtro,pageable);
             return carritos;
         }catch (Exception e){
             throw new Exception(e.getMessage());
