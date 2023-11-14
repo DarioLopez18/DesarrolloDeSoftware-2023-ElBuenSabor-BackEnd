@@ -80,7 +80,6 @@ public class ElBuenSaborApplication {
 					.rol(Rol.CLIENTE)
 					.build();
 			usuario1.setSubmissionDateAlta(fechaActual);
-			usuarioRepository.save(usuario1);
 
 
 			Usuario usuario2 = Usuario.builder()
@@ -90,7 +89,6 @@ public class ElBuenSaborApplication {
 					.rol(Rol.ADMINISTRADOR)
 					.build();
 			usuario2.setSubmissionDateAlta(fechaActual);
-			usuarioRepository.save(usuario2);
 
 			Usuario usuario3 = Usuario.builder()
 					.auth0Id("auth0Id12345")
@@ -99,7 +97,6 @@ public class ElBuenSaborApplication {
 					.rol(Rol.COCINERO)
 					.build();
 			usuario3.setSubmissionDateAlta(fechaActual);
-			usuarioRepository.save(usuario3);
 
 			Usuario usuario4 = Usuario.builder()
 					.auth0Id("auth0Id123456")
@@ -108,7 +105,6 @@ public class ElBuenSaborApplication {
 					.rol(Rol.DELIVERY)
 					.build();
 			usuario4.setSubmissionDateAlta(fechaActual);
-			usuarioRepository.save(usuario4);
 
 			Domicilio domicilio1 = Domicilio.builder()
 					.calle("Calle 1")
@@ -118,7 +114,6 @@ public class ElBuenSaborApplication {
 					.numeroDpto(12)
 					.build();
 			domicilio1.setSubmissionDateAlta(fechaActual);
-			domicilioRepository.save(domicilio1);
 
 			Domicilio domicilio2 = Domicilio.builder()
 					.calle("Calle 2")
@@ -128,7 +123,6 @@ public class ElBuenSaborApplication {
 					.numeroDpto(12)
 					.build();
 			domicilio2.setSubmissionDateAlta(fechaActual);
-			domicilioRepository.save(domicilio2);
 
 			//Crea y agrega domicilios al cliente asociado a este usuario
 			Persona cliente1 = Persona.builder()
@@ -152,7 +146,6 @@ public class ElBuenSaborApplication {
 					.numeroDpto(34)
 					.build();
 			domicilio3.setSubmissionDateAlta(fechaActual);
-			domicilioRepository.save(domicilio3);
 
 			// Crear un nuevo cliente asociado a usuario1
 			Persona cliente2 = Persona.builder()
@@ -175,7 +168,6 @@ public class ElBuenSaborApplication {
 					.pisoDpto(2)
 					.build();
 			domicilioEmpleado1.setSubmissionDateAlta(fechaActual);
-			domicilioRepository.save(domicilioEmpleado1);
 
 			Usuario usuarioEmpleado1 = Usuario.builder()
 					.auth0Id("auth123122312312")
@@ -184,7 +176,6 @@ public class ElBuenSaborApplication {
 					.rol(Rol.CAJERO)
 					.build();
 			usuarioEmpleado1.setSubmissionDateAlta(fechaActual);
-			usuarioRepository.save(usuarioEmpleado1);
 
 			Persona empleado1 = Persona.builder()
 					.apellido("Empleado")
@@ -206,7 +197,6 @@ public class ElBuenSaborApplication {
 					.pisoDpto(2)
 					.build();
 			domicilioEmpleado2.setSubmissionDateAlta(fechaActual);
-			domicilioRepository.save(domicilioEmpleado2);
 
 			Usuario usuarioEmpleado2 = Usuario.builder()
 					.auth0Id("auth123122312313")
@@ -215,7 +205,6 @@ public class ElBuenSaborApplication {
 					.rol(Rol.ADMINISTRADOR)
 					.build();
 			usuarioEmpleado2.setSubmissionDateAlta(fechaActual);
-			usuarioRepository.save(usuarioEmpleado2);
 
 			Persona empleado2 = Persona.builder()
 					.apellido("Empleado")
@@ -237,7 +226,6 @@ public class ElBuenSaborApplication {
 					.pisoDpto(2)
 					.build();
 			domicilioEmpleado3.setSubmissionDateAlta(fechaActual);
-			domicilioRepository.save(domicilioEmpleado3);
 
 
 			Usuario usuarioEmpleado3 = Usuario.builder()
@@ -247,7 +235,6 @@ public class ElBuenSaborApplication {
 					.rol(Rol.COCINERO)
 					.build();
 			usuarioEmpleado3.setSubmissionDateAlta(fechaActual);
-			usuarioRepository.save(usuarioEmpleado3);
 
 			Persona empleado3 = Persona.builder()
 					.apellido("Empleado")
@@ -532,22 +519,19 @@ public class ElBuenSaborApplication {
 					.carritoProductos(List.of(carritoProducto1, carritoProducto2, carritoProducto3))
 					.build();
 			carrito1.setSubmissionDateAlta(fechaActual);
-			carritoRepository.save(carrito1);
-
 
 			Carrito carrito2 = Carrito.builder()
 					.numeroCarrito(2)
 					.carritoProductos(List.of(carritoProducto1, carritoProducto2))
 					.build();
 			carrito2.setSubmissionDateAlta(fechaActual);
-			carritoRepository.save(carrito2);
 
 			Carrito carrito3 = Carrito.builder()
 					.numeroCarrito(3)
 					.carritoProductos(List.of(carritoProducto1))
 					.build();
 			carrito3.setSubmissionDateAlta(fechaActual);
-			carritoRepository.save(carrito3);
+
 
 			DetallePedido detallePedido1 = DetallePedido.builder()
 					.cantidad(1)
@@ -556,7 +540,6 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado1)
 					.build();
 			detallePedido1.setSubmissionDateAlta(fechaActual);
-			detallePedidoRepository.save(detallePedido1);
 
 			DetallePedido detallePedido2 = DetallePedido.builder()
 					.cantidad(2)
@@ -565,7 +548,6 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado2)
 					.build();
 			detallePedido2.setSubmissionDateAlta(fechaActual);
-			detallePedidoRepository.save(detallePedido2);
 
 			DetallePedido detallePedido3 = DetallePedido.builder()
 					.cantidad(3)
@@ -574,7 +556,6 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado2)
 					.build();
 			detallePedido3.setSubmissionDateAlta(fechaActual);
-			detallePedidoRepository.save(detallePedido3);
 
 			NotaCredito notaCredito1 = NotaCredito.builder()
 					.factura(null)
@@ -590,7 +571,6 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado1)
 					.build();
 			detalleFactura1.setSubmissionDateAlta(fechaActual);
-			detalleFacturaRepository.save(detalleFactura1);
 
 			DetalleFactura detalleFactura2 = DetalleFactura.builder()
 					.cantidad(2)
@@ -598,7 +578,6 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado2)
 					.build();
 			detalleFactura2.setSubmissionDateAlta(fechaActual);
-			detalleFacturaRepository.save(detalleFactura2);
 
 
 			DetalleFactura detalleFactura3 = DetalleFactura.builder()
@@ -607,7 +586,6 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado3)
 					.build();
 			detalleFactura3.setSubmissionDateAlta(fechaActual);
-			detalleFacturaRepository.save(detalleFactura3);
 
 
 			Factura factura1 = Factura.builder()
@@ -623,7 +601,6 @@ public class ElBuenSaborApplication {
 			//esto esta bien asi o es con la list.of() ??
 			factura1.agregarDetalle(detalleFactura1);
 			//
-			facturaRepository.save(factura1);
 
 			Factura factura2 = Factura.builder()
 					.fechaFacturacion(fechaActual)
@@ -636,7 +613,6 @@ public class ElBuenSaborApplication {
 					.build();
 			factura2.setSubmissionDateAlta(fechaActual);
 			factura2.agregarDetalle(detalleFactura2);
-			facturaRepository.save(factura2);
 
 			Factura factura3 = Factura.builder()
 					.fechaFacturacion(fechaActual)
@@ -649,7 +625,6 @@ public class ElBuenSaborApplication {
 					.build();
 			factura3.setSubmissionDateAlta(fechaActual);
 			factura3.agregarDetalle(detalleFactura3);
-			facturaRepository.save(factura3);
 
 			Date fechaActualnew = new Date();
 
