@@ -449,7 +449,7 @@ public class ElBuenSaborApplication {
 
 			ArticuloManufacturado articuloManufacturado1 = ArticuloManufacturado.builder()
 					.costo(BigDecimal.valueOf(1850))
-					.denominacion("Pizza")
+					.denominacion("Pizza fugazza")
 					.descripcion("Pizza con cebolla")
 					.precioVenta(BigDecimal.valueOf(6550))
 					.categoria(CategoriaProducto.PIZZA)
@@ -512,24 +512,29 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado3)
 					.build();
 			carritoProducto3.setSubmissionDateAlta(fechaActual);
+			carritoProductoRepository.save(carritoProducto3);
 
 			Carrito carrito1 = Carrito.builder()
 					.numeroCarrito(1)
 					.carritoProductos(List.of(carritoProducto1, carritoProducto2, carritoProducto3))
 					.build();
 			carrito1.setSubmissionDateAlta(fechaActual);
+			carritoRepository.save(carrito1);
+
 
 			Carrito carrito2 = Carrito.builder()
 					.numeroCarrito(2)
 					.carritoProductos(List.of(carritoProducto1, carritoProducto2))
 					.build();
 			carrito2.setSubmissionDateAlta(fechaActual);
+			carritoRepository.save(carrito2);
 
 			Carrito carrito3 = Carrito.builder()
 					.numeroCarrito(3)
 					.carritoProductos(List.of(carritoProducto1))
 					.build();
 			carrito3.setSubmissionDateAlta(fechaActual);
+			carritoRepository.save(carrito3);
 
 			DetallePedido detallePedido1 = DetallePedido.builder()
 					.cantidad(1)
@@ -538,6 +543,7 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado1)
 					.build();
 			detallePedido1.setSubmissionDateAlta(fechaActual);
+			detallePedidoRepository.save(detallePedido1);
 
 			DetallePedido detallePedido2 = DetallePedido.builder()
 					.cantidad(2)
@@ -546,6 +552,7 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado2)
 					.build();
 			detallePedido2.setSubmissionDateAlta(fechaActual);
+			detallePedidoRepository.save(detallePedido2);
 
 			DetallePedido detallePedido3 = DetallePedido.builder()
 					.cantidad(3)
@@ -554,6 +561,7 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado2)
 					.build();
 			detallePedido3.setSubmissionDateAlta(fechaActual);
+			detallePedidoRepository.save(detallePedido3);
 
 			NotaCredito notaCredito1 = NotaCredito.builder()
 					.factura(null)
@@ -569,6 +577,7 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado1)
 					.build();
 			detalleFactura1.setSubmissionDateAlta(fechaActual);
+			detalleFacturaRepository.save(detalleFactura1);
 
 			DetalleFactura detalleFactura2 = DetalleFactura.builder()
 					.cantidad(2)
@@ -576,6 +585,8 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado2)
 					.build();
 			detalleFactura2.setSubmissionDateAlta(fechaActual);
+			detalleFacturaRepository.save(detalleFactura2);
+
 
 			DetalleFactura detalleFactura3 = DetalleFactura.builder()
 					.cantidad(3)
@@ -583,6 +594,8 @@ public class ElBuenSaborApplication {
 					.articuloManufacturado(articuloManufacturado3)
 					.build();
 			detalleFactura3.setSubmissionDateAlta(fechaActual);
+			detalleFacturaRepository.save(detalleFactura3);
+
 
 			Factura factura1 = Factura.builder()
 					.fechaFacturacion(fechaActual)
@@ -595,6 +608,7 @@ public class ElBuenSaborApplication {
 					.build();
 			factura1.setSubmissionDateAlta(fechaActual);
 			factura1.agregarDetalle(detalleFactura1);
+			facturaRepository.save(factura1);
 
 			Factura factura2 = Factura.builder()
 					.fechaFacturacion(fechaActual)
@@ -607,6 +621,7 @@ public class ElBuenSaborApplication {
 					.build();
 			factura2.setSubmissionDateAlta(fechaActual);
 			factura2.agregarDetalle(detalleFactura2);
+			facturaRepository.save(factura2);
 
 			Factura factura3 = Factura.builder()
 					.fechaFacturacion(fechaActual)
@@ -619,6 +634,7 @@ public class ElBuenSaborApplication {
 					.build();
 			factura3.setSubmissionDateAlta(fechaActual);
 			factura3.agregarDetalle(detalleFactura3);
+			facturaRepository.save(factura3);
 
 			Date fechaActualnew = new Date();
 
