@@ -197,7 +197,7 @@ public class ElBuenSaborApplication {
 					.numeroDpto(1)
 					.pisoDpto(2)
 					.build();
-			domicilioEmpleado1.setSubmissionDateAlta(fechaActual);
+			domicilioEmpleado2.setSubmissionDateAlta(fechaActual);
 
 			Usuario usuarioEmpleado2 = Usuario.builder()
 					.auth0Id("auth123122312313")
@@ -205,7 +205,7 @@ public class ElBuenSaborApplication {
 					.password("1234")
 					.rol(Rol.ADMINISTRADOR)
 					.build();
-			usuarioEmpleado1.setSubmissionDateAlta(fechaActual);
+			usuarioEmpleado2.setSubmissionDateAlta(fechaActual);
 
 			Persona empleado2 = Persona.builder()
 					.apellido("Empleado")
@@ -226,7 +226,7 @@ public class ElBuenSaborApplication {
 					.numeroDpto(1)
 					.pisoDpto(2)
 					.build();
-			domicilioEmpleado1.setSubmissionDateAlta(fechaActual);
+			domicilioEmpleado3.setSubmissionDateAlta(fechaActual);
 
 			Usuario usuarioEmpleado3 = Usuario.builder()
 					.auth0Id("auth123122312315")
@@ -234,7 +234,7 @@ public class ElBuenSaborApplication {
 					.password("1234")
 					.rol(Rol.COCINERO)
 					.build();
-			usuarioEmpleado1.setSubmissionDateAlta(fechaActual);
+			usuarioEmpleado3.setSubmissionDateAlta(fechaActual);
 
 			Persona empleado3 = Persona.builder()
 					.apellido("Empleado")
@@ -244,7 +244,7 @@ public class ElBuenSaborApplication {
 					.telefono("2616150281")
 					.usuario(usuarioEmpleado3)
 					.build();
-			empleado1.setSubmissionDateAlta(fechaActual);
+			empleado3.setSubmissionDateAlta(fechaActual);
 			personaRepository.save(empleado3);
 
 			// Guardar el nuevo cliente en el repositorio
