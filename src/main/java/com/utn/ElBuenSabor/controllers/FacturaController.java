@@ -2,6 +2,7 @@ package com.utn.ElBuenSabor.controllers;
 import com.utn.ElBuenSabor.entities.Factura;
 import com.utn.ElBuenSabor.services.FacturaServiceImpl;
 import org.springframework.data.domain.Pageable;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -32,7 +33,7 @@ public class FacturaController extends BaseControllerImpl<Factura, FacturaServic
     }
 
     @GetMapping("/searchTotalVentas")
-    public ResponseEntity<?> searchTotalVentas(@RequestParam Date desde, Date hasta){
+    public ResponseEntity<?> searchTotalVentas(@RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date desde, @RequestParam @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) Date hasta){
         try {
             return ResponseEntity.status(HttpStatus.OK).body(servicio.searchTotalVentas(desde, hasta));
         }catch (Exception e){
