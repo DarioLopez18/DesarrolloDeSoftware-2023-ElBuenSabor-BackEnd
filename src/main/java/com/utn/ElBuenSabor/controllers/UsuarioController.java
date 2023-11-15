@@ -22,6 +22,15 @@ public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServic
         }
     }
 
+    @GetMapping("/userName")
+    public ResponseEntity<?> findByUsername(@RequestParam String username){
+        try {
+            return ResponseEntity.status(HttpStatus.OK).body(servicio.findByUsername(username));
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error, por favor intente más tarde.\"}");
+        }
+    }
+
     @PutMapping("/cambiarContraseña")
     public ResponseEntity<?> search(@RequestBody DTOCambiarContrasenia dtoCambiarContraseña) {
         try {
@@ -30,5 +39,7 @@ public class UsuarioController extends BaseControllerImpl<Usuario, UsuarioServic
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("{\"error\":\"Error. Por favor, intente más tarde.\"}");
         }
     }
+
+
 
 }

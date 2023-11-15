@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UsuarioServiceImpl extends BaseServiceImpl<Usuario,Long> implements UsuarioService {
@@ -28,6 +29,16 @@ public class UsuarioServiceImpl extends BaseServiceImpl<Usuario,Long> implements
             return entities;
         } catch (Exception e) {
             throw new Exception(e.getMessage());
+        }
+    }
+
+    @Override
+    public Optional<Usuario> findByUsername(String username) {
+        try {
+            Optional<Usuario> user = usuarioRepository.findByUsername(username);
+            return user;
+        } catch (Exception e) {
+            throw e;
         }
     }
 

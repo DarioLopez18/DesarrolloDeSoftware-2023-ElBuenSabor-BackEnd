@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
+import org.springframework.security.crypto.password.PasswordEncoder;
 
 import java.math.BigDecimal;
 import java.text.SimpleDateFormat;
@@ -50,6 +51,9 @@ public class ElBuenSaborApplication {
 	public CarritoProductoRepository carritoProductoRepository;
 
 	@Autowired
+	private PasswordEncoder passwordEncoder;
+
+	@Autowired
 	public CarritoRepository carritoRepository;
 
 	@Autowired
@@ -76,7 +80,7 @@ public class ElBuenSaborApplication {
 			Usuario usuario1 = Usuario.builder()
 					.auth0Id("auth0Id123")
 					.username("username123")
-					.password("123")
+					.password(passwordEncoder.encode("1234"))
 					.rol(Rol.CLIENTE)
 					.build();
 			usuario1.setSubmissionDateAlta(fechaActual);
